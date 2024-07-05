@@ -164,7 +164,7 @@ console.log(languaje)
 
       <div className='relative px-5 py-12 w-full lg:px-[100px]  z-30    from-[#00195cdc] via-[#00195cb6] to-[#00195cdc] '>
         <div>
-          <Subtitle><h3 className='text-[30px] text-[white] text-center font-medium  py-10'>{languaje === 'Español' ? subtitle : subtitleEN}</h3></Subtitle>
+          <Subtitle><h3 className='text-[30px] text-[white] text-center font-medium  py-10'>{subtitleEN &&  languaje !== 'Español' ? subtitleEN  : subtitle  }</h3></Subtitle>
           <ScrollAnimation animateIn='bounceInLeft'
             animateOut='bounceOutLeft'
             initiallyVisible={true}
