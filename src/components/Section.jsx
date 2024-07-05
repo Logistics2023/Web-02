@@ -1,4 +1,6 @@
 'use client'
+import { Suspense } from "react";
+
 import { useUser } from '@/context/Context'
 import { onAuth, signInWithEmail, writeUserData, removeData } from '@/firebase/utils'
 import { useEffect, useState, useRef, use } from 'react'
@@ -128,7 +130,7 @@ function Componente2({ title, image, paragraph, id, route }) {
   )
 }
 
-export default function Section({ subtitle, description, video, gradiente, id, children, tarjetas, miniTarjetas }) {
+export default function Section({ subtitle, subtitleEN, description, descriptionEN, video, gradiente, id, children, tarjetas, miniTarjetas }) {
 
   const { cliente, languaje } = useUser()
   const [data, setData] = useState('')
@@ -153,26 +155,36 @@ export default function Section({ subtitle, description, video, gradiente, id, c
     //   setData(db)
     // }).catch(console.error);
   }, [])
+console.log(languaje)
 
-
-  return <Translator from='es' to={languaje.slice(0, 2).toLowerCase()}>
+  return <Suspense> <Translator from='es' to={languaje.slice(0, 2).toLowerCase()}>
 
     <section className='relative w-full   bg-gradient-to-tr from-[#00195c] via-[#384C94] to-[#00195c] overflow-x-hidden overflow-hidden' id={id}>
       {/* <div className='relative px-5 py-12 w-full min-h-[50vh] flex flex-col z-30 lg:grid lg:grid-cols-2 justify-around items-center  from-[#00195cdc] via-[#00195cb6] to-[#00195cdc] '> */}
 
       <div className='relative px-5 py-12 w-full lg:px-[100px]  z-30    from-[#00195cdc] via-[#00195cb6] to-[#00195cdc] '>
         <div>
-          <Subtitle><h3 className='text-[30px] text-[white] text-center font-medium  py-10'>{subtitle}</h3></Subtitle>
+          <Subtitle><h3 className='text-[30px] text-[white] text-center font-medium  py-10'>{languaje === 'Español' ? subtitle : subtitleEN}</h3></Subtitle>
           <ScrollAnimation animateIn='bounceInLeft'
             animateOut='bounceOutLeft'
             initiallyVisible={true}
           >
-            <p className=' text-[16px] text-[white] pb-5  ql-editor'
-            //  dangerouslySetInnerHTML={{ __html: data }}
-            >
-              <Translator from='es' to={languaje.slice(0, 2).toLowerCase()}>
-                {parse(description.replaceAll("<s>", "<span style='text-transform: uppercase; font-weight: 500'>").replaceAll("</s>", "</span>"))}</Translator>
-            </p>
+            {descriptionEN
+              ? <p className=' text-[16px] text-[white] pb-5  ql-editor'
+                dangerouslySetInnerHTML={{ __html: languaje === 'Español' ? description : descriptionEN }}
+              >
+              </p>
+              :
+              <p className=' text-[16px] text-[white] pb-5  ql-editor'
+              //  dangerouslySetInnerHTML={{ __html: data }}
+              >
+                <Translator from='es' to={languaje.slice(0, 2).toLowerCase()}>
+                  {parse(description.replaceAll("<s>", "<span style='text-transform: uppercase; font-weight: 500'>").replaceAll("</s>", "</span>"))}</Translator>
+              </p>
+
+
+
+            }
           </ScrollAnimation>
         </div>
 
@@ -202,7 +214,7 @@ export default function Section({ subtitle, description, video, gradiente, id, c
         <div className={`relative flex flex-wrap py-10 ${tarjetas && Object.entries(tarjetas).length > 2 ? 'md:grid md:grid-cols-3' : 'md:grid md:grid-cols-2'}`}>
           {cliente && cliente[id] && cliente[id].tarjetas && Object.entries(tarjetas).map((i, index) => {
             return <div className=' w-full  md:w-auto p-5 z-50' key={index}>
-              {id !== 'experiencia' && id !== 'solucionesIT' &&<Componente route={i[0]} id={id} db={i[1]} title={i[1].title} image={i[1].url} paragraph={i[1].paragraph} />}
+              {id !== 'experiencia' && id !== 'solucionesIT' && <Componente route={i[0]} id={id} db={i[1]} title={i[1].title} image={i[1].url} paragraph={i[1].paragraph} />}
               {id === 'experiencia' && <Componente2 route={i[0]} id={id} db={i[1]} title={i[1].title} image={i[1].url} paragraph={i[1].paragraph} />}
               {id === 'solucionesIT' && <Componente3 route={i[0]} hash={i[1].hash} id={id} db={i[1]} title={i[1].title} image={i[1].url} paragraph={i[1].paragraph} />}
 
@@ -213,5 +225,7 @@ export default function Section({ subtitle, description, video, gradiente, id, c
     </section>
 
   </Translator>
+  </Suspense >
+
 
 }

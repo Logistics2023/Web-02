@@ -57,7 +57,7 @@ export default function BottomNavigation({ rol }) {
         setLanguaje(i)
         setTimeout(() => {
             setUserSuccess('')
-        }, 3000);
+        }, 10);
     }
 
 

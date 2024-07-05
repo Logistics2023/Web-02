@@ -260,15 +260,15 @@ export default function Home() {
 
   return (
     <main className={`relative  w-screen `} onClick={reset} id='inicio'>
-        <div className='absolute top-0 justify-space-between'>
-            <div id='Tracking'></div>
-            <div id='FTL'></div>
-            <div id='FCL'></div>
-          </div>
+      <div className='absolute top-0 justify-space-between'>
+        <div id='Tracking'></div>
+        <div id='FTL'></div>
+        <div id='FCL'></div>
+      </div>
       <Translator from='es' to={languaje.slice(0, 2).toLowerCase()} shouldFallback={() => setUserSuccess('')}>
 
         <section className='relative ' >
-        
+
 
           <video className='fixed bottom-0 w-full h-[100vh] pb-[10px] object-cover object-bottom ' autoPlay loop muted playsInline>
             <source src={cliente.inicio.url} type="video/mp4" />
@@ -279,7 +279,7 @@ export default function Home() {
             <div className='relative  w-full lg:w-[40%] lg:bg-[#111a33d0] p-5 '>
 
               <div className='   font-bold'>
-             {  languaje === 'Español' ?   <TextMaquina /> : <TextMaquina2 /> }
+                {languaje === 'Español' ? <TextMaquina /> : <TextMaquina2 />}
               </div>
               <br />
               <div className='grid grid-cols-2 gap-2 w-full '>
@@ -485,7 +485,7 @@ export default function Home() {
           <div className='relative px-5 py-12 w-full flex flex-col  lg:grid lg:grid-cols-2 justify-around items-center   bg-gradient-to-t from-[#00195cdc] via-[#00195cb6] to-[#00195cdc] ' id='Nosotros'>
             <div>
 
-              <Subtitle><h3 className='text-[30px] text-[white] text-center font-medium  py-5'>{languaje === 'Español' ?cliente.inicio.titulo: 'About  Us'}</h3></Subtitle>
+              <Subtitle><h3 className='text-[30px] text-[white] text-center font-medium  py-5'>{languaje === 'Español' ? cliente.inicio.titulo : 'About  Us'}</h3></Subtitle>
               <ScrollAnimation animateIn='bounceInRight'
                 animateOut='bounceOutLeft'
                 initiallyVisible={true}
@@ -588,15 +588,50 @@ export default function Home() {
 
 
 
-        {cliente['terrestre'] && <Section subtitle={cliente['terrestre'].titulo} description={cliente['terrestre'].content} video={cliente['terrestre'].url} degrade='#00000067' tarjetas={cliente['terrestre'].tarjetas} miniTarjetas={cliente['terrestre'].miniTarjetas} id={'terrestre'}></Section>}
-        {cliente['maritimo'] && <Section subtitle={cliente['maritimo'].titulo} description={cliente['maritimo'].content} video={cliente['maritimo'].url} degrade='#00000067' tarjetas={cliente['maritimo'].tarjetas} miniTarjetas={cliente['maritimo'].miniTarjetas} id={'maritimo'}></Section>}
-        {cliente['aereo'] && <Section subtitle={cliente['aereo'].titulo} description={cliente['aereo'].content} video={cliente['aereo'].url} degrade='#00000067' tarjetas={cliente['aereo'].tarjetas} miniTarjetas={cliente['aereo'].miniTarjetas} id={'aereo'}></Section>}
-        {cliente['despachos'] && <Section subtitle={cliente['despachos'].titulo} description={cliente['despachos'].content} video={cliente['despachos'].url} degrade='#00000067' tarjetas={cliente['despachos'].tarjetas} miniTarjetas={cliente['despachos'].miniTarjetas} id={'despachos'}></Section>}
-        {cliente['proyecto'] && <Section subtitle={cliente['proyecto'].titulo} description={cliente['proyecto'].content} video={cliente['proyecto'].url} degrade='#00000067' tarjetas={cliente['proyecto'].tarjetas} miniTarjetas={cliente['proyecto'].miniTarjetas} id={'proyecto'}></Section>}
-        {cliente['exportaciones'] && <Section subtitle={cliente['exportaciones'].titulo} description={cliente['exportaciones'].content} video={cliente['exportaciones'].url} degrade='#00000067' tarjetas={cliente['exportaciones'].tarjetas} miniTarjetas={cliente['exportaciones'].miniTarjetas} id={'exportaciones'}></Section>}
-        {cliente['farmaceutico'] && <Section subtitle={cliente['farmaceutico'].titulo} description={cliente['farmaceutico'].content} video={cliente['farmaceutico'].url} degrade='#00000067' tarjetas={cliente['farmaceutico'].tarjetas} miniTarjetas={cliente['farmaceutico'].miniTarjetas} id={'farmaceutico'}></Section>}
-        {cliente['solucionesIT'] && <Section subtitle={cliente['solucionesIT'].titulo} description={cliente['solucionesIT'].content} video={cliente['solucionesIT'].url} degrade='#00000067' tarjetas={cliente['solucionesIT'].tarjetas} miniTarjetas={cliente['solucionesIT'].miniTarjetas} id={'solucionesIT'}></Section>}
-        {cliente['experiencia'] && <Section subtitle={cliente['experiencia'].titulo} description={cliente['experiencia'].content} video={cliente['experiencia'].url} degrade='#00000067' tarjetas={cliente['experiencia'].tarjetas} miniTarjetas={cliente['experiencia'].miniTarjetas} id={'experiencia'}></Section>}
+        {cliente['terrestre'] && <Section
+          subtitle={cliente['terrestre'].titulo} subtitleEN={cliente['terrestre'].tituloEN}
+          description={cliente['terrestre'].content} descriptionEN={cliente['terrestre'].contentEN}
+          video={cliente['terrestre'].url} degrade='#00000067' tarjetas={cliente['terrestre'].tarjetas} miniTarjetas={cliente['terrestre'].miniTarjetas} id={'terrestre'}></Section>}
+
+        {cliente['maritimo'] && <Section 
+        subtitle={cliente['maritimo'].titulo} subtitleEN={cliente['maritimo'].tituloEN}
+          description={cliente['maritimo'].content} descriptionEN={cliente['maritimo'].contentEN}
+          video={cliente['maritimo'].url} degrade='#00000067' tarjetas={cliente['maritimo'].tarjetas} miniTarjetas={cliente['maritimo'].miniTarjetas} id={'maritimo'}></Section>}
+
+        {cliente['aereo'] && <Section
+          subtitle={cliente['aereo'].titulo} subtitleEN={cliente['aereo'].tituloEN}
+          description={cliente['aereo'].content} descriptionEN={cliente['aereo'].contentEN}
+          video={cliente['aereo'].url} degrade='#00000067' tarjetas={cliente['aereo'].tarjetas} miniTarjetas={cliente['aereo'].miniTarjetas} id={'aereo'}></Section>}
+
+        {cliente['despachos'] && <Section
+          subtitle={cliente['despachos'].titulo}  subtitleEN={cliente['despachos'].tituloEN}
+          description={cliente['despachos'].content} descriptionEN={cliente['despachos'].contentEN}
+          video={cliente['despachos'].url} degrade='#00000067' tarjetas={cliente['despachos'].tarjetas} miniTarjetas={cliente['despachos'].miniTarjetas} id={'despachos'}></Section>}
+
+        {cliente['proyecto'] && <Section
+          subtitle={cliente['proyecto'].titulo} subtitleEN={cliente['proyecto'].tituloEN}
+          description={cliente['proyecto'].content} descriptionEN={cliente['proyecto'].contentEN} 
+          video={cliente['proyecto'].url} degrade='#00000067' tarjetas={cliente['proyecto'].tarjetas} miniTarjetas={cliente['proyecto'].miniTarjetas} id={'proyecto'}></Section>}
+
+        {cliente['exportaciones'] && <Section
+          subtitle={cliente['exportaciones'].titulo} subtitleEN={cliente['exportaciones'].tituloEN}
+          description={cliente['exportaciones'].content} descriptionEN={cliente['exportaciones'].contentEN}
+          video={cliente['exportaciones'].url} degrade='#00000067' tarjetas={cliente['exportaciones'].tarjetas} miniTarjetas={cliente['exportaciones'].miniTarjetas} id={'exportaciones'}></Section>}
+
+        {cliente['farmaceutico'] && <Section
+          subtitle={cliente['farmaceutico'].titulo} subtitleEN={cliente['farmaceutico'].tituloEN}
+          description={cliente['farmaceutico'].content}  descriptionEN={cliente['farmaceutico'].contentEN} 
+          video={cliente['farmaceutico'].url} degrade='#00000067' tarjetas={cliente['farmaceutico'].tarjetas} miniTarjetas={cliente['farmaceutico'].miniTarjetas} id={'farmaceutico'}></Section>}
+
+        {cliente['solucionesIT'] && <Section
+          subtitle={cliente['solucionesIT'].titulo} subtitleEN={cliente['solucionesIT'].tituloEN}
+          description={cliente['solucionesIT'].content} descriptionEN={cliente['solucionesIT'].contentEN}
+          video={cliente['solucionesIT'].url} degrade='#00000067' tarjetas={cliente['solucionesIT'].tarjetas} miniTarjetas={cliente['solucionesIT'].miniTarjetas} id={'solucionesIT'}></Section>}
+
+        {cliente['experiencia'] && <Section
+          subtitle={cliente['experiencia'].titulo} subtitleEN={cliente['experiencia'].tituloEN}
+          description={cliente['experiencia'].content} descriptionEN={cliente['experiencia'].contentEN}
+          video={cliente['experiencia'].url} degrade='#00000067' tarjetas={cliente['experiencia'].tarjetas} miniTarjetas={cliente['experiencia'].miniTarjetas} id={'experiencia'}></Section>}
 
         <div className='relative  h-[100vh] md:h-[80vh] bg-gradient-to-t py-[20vh] md:py-[10vh] from-[#00195cdc] via-[#293f79d3] to-[#00195cdc]'>
 
