@@ -52,6 +52,7 @@ export default function BottomNavigation({ rol }) {
 
 
     function handlerClickSelect(name, i, uuid) {
+        setLanguaje('')
         i === 'Español' ? '' : setUserSuccess('Change')
         setLanguaje(i)
         setTimeout(() => {

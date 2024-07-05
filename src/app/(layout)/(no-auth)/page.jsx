@@ -12,6 +12,8 @@ import Section from '@/components/Section'
 import { glosario } from '@/db'
 import Footer from '@/components/Footer'
 import TextMaquina from '@/components/TextMaquina'
+import TextMaquina2 from '@/components/TextMaquina2'
+
 import { useRouter } from 'next/navigation';
 import AwesomeSlider from 'react-awesome-slider';
 import withAutoplay from 'react-awesome-slider/dist/autoplay';
@@ -277,7 +279,7 @@ export default function Home() {
             <div className='relative  w-full lg:w-[40%] lg:bg-[#111a33d0] p-5 '>
 
               <div className='   font-bold'>
-             {  success !== '' &&  <TextMaquina />}
+             {  languaje === 'Español' ?   <TextMaquina /> : <TextMaquina2 /> }
               </div>
               <br />
               <div className='grid grid-cols-2 gap-2 w-full '>
