@@ -596,31 +596,33 @@ export default function Home() {
         {cliente['solucionesIT'] && <Section subtitle={cliente['solucionesIT'].titulo} description={cliente['solucionesIT'].content} video={cliente['solucionesIT'].url} degrade='#00000067' tarjetas={cliente['solucionesIT'].tarjetas} miniTarjetas={cliente['solucionesIT'].miniTarjetas} id={'solucionesIT'}></Section>}
         {cliente['experiencia'] && <Section subtitle={cliente['experiencia'].titulo} description={cliente['experiencia'].content} video={cliente['experiencia'].url} degrade='#00000067' tarjetas={cliente['experiencia'].tarjetas} miniTarjetas={cliente['experiencia'].miniTarjetas} id={'experiencia'}></Section>}
 
-        <div className='relative  bg-gradient-to-t from-[#00195cdc] via-[#00195cb6] to-[#00195cdc]'>
+        <div className='relative'>
 
 
 
-          {cliente.Slider1 && <div className='relative'>
+          {cliente.Slider1 && <div className='relative  bg-gradient-to-t from-[#00195cdc] via-[#00195cb6] to-[#00195cdc]'>
             <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>Testimonios</h1>
             <SliderTestimonios content={Object.values(cliente.Testimonios)} />
+          </div>}
+          {cliente.Slider1 && <div className='relative bg-gradient-to-tr from-[#00195c] via-[#00195c] to-[#00195c]'>
             <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>Nuestros Clientes</h1>
             <Slider content={Object.values(cliente.Slider1)} />
           </div>}
 
-          {cliente.Slider2 && <div className='relative'>
+          {cliente.Slider2 && <div className='relative bg-gradient-to-tr from-[#00195c] via-[#00195c] to-[#00195c]'>
             <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>Socios  Comerciales</h1>
             <Slider content={Object.values(cliente.Slider2)} />
           </div>}
 
-          {cliente.Slider3 && <div className='relative'>
+          {cliente.Slider3 && <div className='relative bg-gradient-to-tr from-[#00195c] via-[#00195c] to-[#00195c]'>
             <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>Empresas</h1>
             <Slider content={Object.values(cliente.Slider3)} />
           </div>}
 
-          <div className='w-full flex flex-col justify-center items-center relative '>
+          {/* <div className='w-full flex flex-col justify-center items-center relative '>
             <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>Postula y trabaja  con nosotros</h1>
             <Button theme='Primary' click={() => router.push('/Postulaciones')}>Postular</Button>
-          </div>
+          </div> */}
 
 
 
