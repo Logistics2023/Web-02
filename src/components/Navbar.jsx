@@ -57,7 +57,7 @@ export default function BottomNavigation({ rol }) {
         setLanguaje(i)
         setTimeout(() => {
             setUserSuccess('')
-        }, 10);
+        }, 1);
     }
 
 
@@ -128,7 +128,7 @@ export default function BottomNavigation({ rol }) {
                                 <Link href='/#inicio' className={`block py-2 pl-3 pr-4 text-[14px] rounded   md:border-0  md:p-0   transition-all hover:text-[#F1BA06] cursor-pointer z-30 ${navItem === 'Inicio' ? 'text-[#F1BA06]' : 'text-white'}`}>{languaje === 'Español' ? 'Inicio' : 'Home'}</Link>
                             </li>
                             <li onClick={() => handlerNavItem('Servicios')}>
-                                <Link href="#" className={`block py-2 pl-3 pr-4 text-[14px] rounded   md:border-0  md:p-0   transition-all hover:text-[#F1BA06] cursor-pointer z-30 ${navItem === 'Servicios' ? 'text-[#F1BA06]' : 'text-white'}`}>Servicios</Link>
+                                <Link href="#" className={`block py-2 pl-3 pr-4 text-[14px] rounded   md:border-0  md:p-0   transition-all hover:text-[#F1BA06] cursor-pointer z-30 ${navItem === 'Servicios' ? 'text-[#F1BA06]' : 'text-white'}`}> {languaje === 'Español' ? 'Servicios' : 'Services'}</Link>
                                 <div className={`absolute top-[90px] right-[20px] w-[350px]  bg-blue-950  grid grid-cols-2 gap-[20px]  rounded-2xl z-20  overflow-hidden ${navItem === 'Servicios' ? 'h-auto p-[20px]' : 'h-0 overflow-hidden'}`}>
                                     <Link href='/#terrestre' className='bg-[#F1BA06]   flex flex-col items-center px-[5px] py-[5px] rounded-[7px]'>
                                         <img src="/icons/TERRESTRE.png" className=" w-[35px]" alt="" />
@@ -149,7 +149,7 @@ export default function BottomNavigation({ rol }) {
                                 </div>
                             </li>
                             <li onClick={() => handlerNavItem('ServiciosEspecializados')}>
-                                <Link href="#" className={`block py-2 pl-3 pr-4 text-[14px] rounded   md:border-0  md:p-0   transition-all hover:text-[#F1BA06] cursor-pointer z-30 ${navItem === 'ServiciosEspecializados' ? 'text-[#F1BA06]' : 'text-white'}`}>Servicios Especializados</Link>
+                                <Link href="#" className={`block py-2 pl-3 pr-4 text-[14px] rounded   md:border-0  md:p-0   transition-all hover:text-[#F1BA06] cursor-pointer z-30 ${navItem === 'ServiciosEspecializados' ? 'text-[#F1BA06]' : 'text-white'}`}>{languaje === 'Español' ? 'Servicios Especializados' : 'Specialized services'}</Link>
                                 <div className={`absolute top-[90px] right-[20px] w-[350px]  bg-blue-950  grid grid-cols-2 gap-[20px]  rounded-2xl z-20  overflow-hidden ${navItem === 'ServiciosEspecializados' ? 'h-auto p-[20px]' : 'h-0 overflow-hidden'}`}>
                                     <Link href='/#proyecto' onClick={() => setNav(false)} className='bg-[#F1BA06]   flex flex-col items-center px-[5px] py-[5px] rounded-[7px]'>
                                         <img src="/icons/CARGA REFRIGERADA.png" className=" w-[35px]" alt="" />
@@ -167,7 +167,7 @@ export default function BottomNavigation({ rol }) {
                             </li>
 
                             <li onClick={() => handlerNavItem('Herramientas')}>
-                                <Link href="#" className={`block py-2 pl-3 pr-4 text-[14px] rounded   md:border-0  md:p-0   transition-all hover:text-[#F1BA06] cursor-pointer z-30 ${navItem === 'Herramientas' ? 'text-[#F1BA06]' : 'text-white'}`} >Herramientas</Link>
+                                <Link href="#" className={`block py-2 pl-3 pr-4 text-[14px] rounded   md:border-0  md:p-0   transition-all hover:text-[#F1BA06] cursor-pointer z-30 ${navItem === 'Herramientas' ? 'text-[#F1BA06]' : 'text-white'}`} >{languaje === 'Español' ? 'Herramientas' : 'Tools'}</Link>
                                 <div className={`absolute top-[90px] right-[20px] w-[350px]  bg-blue-950  grid grid-cols-2 gap-[20px]  rounded-2xl z-20  overflow-hidden ${navItem === 'Herramientas' ? 'h-auto p-[20px]' : 'h-0 overflow-hidden'}`}>
                                     <Link href='/Contenedores?item=maritimos' className='bg-[#F1BA06]   flex flex-col items-center justify-around px-[5px] py-[5px] rounded-[7px]'>
                                         <img src="/icons/TIPOS DE CONTENEDORES MARITIMOS.png" className=" w-[35px]" alt="" />
@@ -192,7 +192,7 @@ export default function BottomNavigation({ rol }) {
                                 </div>
                             </li>
                             <li onClick={() => handlerNavItem('Nosotros')}>
-                                <Link href="#" className={`block py-2 pl-3 pr-4 text-[14px] rounded   md:border-0  md:p-0   transition-all hover:text-[#F1BA06] cursor-pointer z-30 ${navItem === 'Nosotros' ? 'text-[#F1BA06]' : 'text-white'}`}>Acerca de</Link>
+                                <Link href="#" className={`block py-2 pl-3 pr-4 text-[14px] rounded   md:border-0  md:p-0   transition-all hover:text-[#F1BA06] cursor-pointer z-30 ${navItem === 'Nosotros' ? 'text-[#F1BA06]' : 'text-white'}`}>{languaje === 'Español' ? 'Acerca de' : 'About Us'}Acerca de</Link>
                                 <div className={`absolute top-[90px] right-[20px] w-[350px]  bg-blue-950  grid grid-cols-2 gap-[20px]  rounded-2xl z-20  overflow-hidden ${navItem === 'Nosotros' ? 'h-auto p-[20px]' : 'h-0 overflow-hidden'}`}>
                                     <Link href='/#Nosotros' className='bg-[#F1BA06]   flex flex-col items-center px-[5px] py-[5px] rounded-[7px]'>
                                         <img src="/icons/NOSOTROS.png" className=" w-[35px]" alt="" />
@@ -209,8 +209,8 @@ export default function BottomNavigation({ rol }) {
                             <li>
                                 {
                                     pathname === '/' && (user
-                                        ? <button className=' relative h-[35px]  z-50 bg-[#F7BE38] p-2 px-5 rounded-[5px] border hidden lg:block' onClick={() => handleSignOut()}>Cerrar Sesión</button>
-                                        : <button className=' relative h-[35px] z-50 bg-[#F7BE38]   p-2 px-5 rounded-[5px] border hidden lg:block' onClick={() => router.push('/Login')}>Iniciar Sesión</button>
+                                        ? <button className=' relative h-[35px]  z-50 bg-[#F7BE38] p-2 px-5 rounded-[5px] border hidden lg:block' onClick={() => handleSignOut()}>{languaje === 'Español' ? 'Cerrar Sesión' : 'Logout'}</button>
+                                        : <button className=' relative h-[35px] z-50 bg-[#F7BE38]   p-2 px-5 rounded-[5px] border hidden lg:block' onClick={() => router.push('/Login')}>{languaje === 'Español' ? 'Iniciar Sesión' : 'Login'}</button>
                                     )
                                 }
                             </li>
