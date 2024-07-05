@@ -44,10 +44,9 @@ const InvoicePDF = dynamic(() => import("@/components/CotizacionPDF"), {
 });
 
 export default function Home() {
-  const { user, introVideo, userDB, setUserProfile, languaje, modal, setModal, setUserSuccess, calcValueFCL, setCalcValueFCL, calcValue, setCalcValue, element, setElement, naviera, setNaviera, success, setUserData, postsIMG, setUserPostsIMG, nav, cliente, setCliente, focus, setFocus, seeMore, setSeeMore } = useUser()
+  const { user, introVideo, userDB, selectValue, setSelectValue, setUserProfile, languaje, modal, setModal, setUserSuccess, calcValueFCL, setCalcValueFCL, calcValue, setCalcValue, element, setElement, naviera, setNaviera, success, setUserData, postsIMG, setUserPostsIMG, nav, cliente, setCliente, focus, setFocus, seeMore, setSeeMore } = useUser()
 
 
-  const [selectValue, setSelectValue] = useState({})
   const [code, setCode] = useState('')
   const hash = useHash();
 

@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
 
 
 const PDFView = ({ click }) => {
-    const { pdfData, setUserPdfData, calcValueFCL, setCalcValueFCL, naviera, calcValue, setCalcValue, element, setElement, cliente } = useUser()
+    const { pdfData, setUserPdfData, calcValueFCL, setCalcValueFCL,selectValue, setSelectValue,  naviera, calcValue, setCalcValue, element, setElement, cliente } = useUser()
 
     const [isCliente, setisCliente] = useState(false);
 

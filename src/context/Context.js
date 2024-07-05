@@ -41,6 +41,7 @@ export function UserProvider({ children }) {
     const [msg, setMsg] = useState('')
     const [tienda, setTienda] = useState('Comprar')
 	const [pdfData, setPdfData] = useState({tarifa: [''], otrosGastos: ['']})
+	const [selectValue, setSelectValue] = useState({})
 
 	const videoRef = useRef();
 	const [play, setPlay] = useState(true)
@@ -125,7 +126,7 @@ export function UserProvider({ children }) {
 			setFilter,
 			setRecetaDB,
 			setQRurl,
-			setQr,
+			setQr,selectValue, setSelectValue,
 			naviera, setNaviera,
 			element, setElement,
 			calcValueFCL, setCalcValueFCL,
@@ -147,7 +148,7 @@ export function UserProvider({ children }) {
 			setUserSuccess,
 			setUserItem
 		})
-	}, [user, userDB, distributorPDB, focus, languaje, productDB,trackingDB, track,element,option, calcValue,calcValueFCL,naviera,pedidos, item, cart, success, qr, QRurl, recetaDB, cliente, filter, filterQR, recetaDBP, select, nav, temporal, userUuid, modal, msg, tienda, introVideo, play, sound, navItem, webScann, seeMore,])
+	}, [user, userDB, distributorPDB, focus, languaje,selectValue, productDB,trackingDB, track,element,option, calcValue,calcValueFCL,naviera,pedidos, item, cart, success, qr, QRurl, recetaDB, cliente, filter, filterQR, recetaDBP, select, nav, temporal, userUuid, modal, msg, tienda, introVideo, play, sound, navItem, webScann, seeMore,])
 
 	return (
 		<UserContext.Provider value={value} >
