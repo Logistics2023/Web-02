@@ -21,10 +21,14 @@ function Responsive({ content }) {
         <div className="slider-container">
             <Slider {...settings} autoplay={true}>
                 {content.map((i, index) => (
-                    <div className='text-center p-[100px] lg:p-[200px]'>
-                        <p className='italic text-white' dangerouslySetInnerHTML={{ __html: i.paragraph }}></p>
-                        <br />
-                        <h4 className='font-bold italic text-white'>{i.title}</h4>
+                    <div className='relative w-full  text-center p-[100px] lg:p-[100px] '>
+                        <div className='text-center relative left-0 right-0 mx-auto bg-gray-100 p-[100px] max-w-[800px]  rounded-[20px]'>
+                            <p className='italic text-black' dangerouslySetInnerHTML={{ __html: i.paragraph }}></p>
+                            <br />
+                            <h4 className='font-bold italic text-black'>{i.title}</h4>
+
+                        </div>
+
                     </div>
                 ))}
             </Slider>

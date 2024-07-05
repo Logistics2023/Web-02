@@ -62,7 +62,7 @@ export default function Home() {
               href={cliente.contactos && cliente.contactos.facebook ? cliente.contactos.facebook : '#'}
               target='_blank'
               type="button"
-              className="m-1 h-9 w-9 rounded-full border-2 border-white uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
+              className="m-1 h-9 w-9 relative flex items-center justify-center rounded-full border-2 border-white uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
               data-te-ripple-init
               data-te-ripple-color="light">
               <svg
@@ -77,7 +77,7 @@ export default function Home() {
             <a
               href={cliente.contactos && cliente.contactos.twiter ? cliente.contactos.twiter : '#'}
               type="button"
-              className="m-1 h-9 w-9 rounded-full border-2 border-white uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
+              className="m-1 h-9 w-9 flex items-center justify-center  rounded-full border-2 border-white uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
               data-te-ripple-init
               data-te-ripple-color="light">
               <svg
@@ -110,7 +110,7 @@ export default function Home() {
             <a
               href={cliente.contactos && cliente.contactos.instagram ? cliente.contactos.instagram : '#'}
               type="button"
-              className="m-1 h-9 w-9 rounded-full border-2 border-white uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
+              className="m-1 h-9 w-9 flex items-center justify-center  rounded-full border-2 border-white uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
               data-te-ripple-init
               data-te-ripple-color="light">
               <svg
@@ -126,7 +126,7 @@ export default function Home() {
             <a
               href={cliente.contactos && cliente.contactos.linkedin ? cliente.contactos.linkedin : '#'}
               type="button"
-              className="m-1 h-9 w-9 rounded-full border-2 border-white uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
+              className="m-1 h-9 w-9 flex items-center justify-center  rounded-full border-2 border-white uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
               data-te-ripple-init
               data-te-ripple-color="light">
               <svg

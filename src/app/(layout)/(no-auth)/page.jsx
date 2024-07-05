@@ -596,7 +596,7 @@ export default function Home() {
         {cliente['solucionesIT'] && <Section subtitle={cliente['solucionesIT'].titulo} description={cliente['solucionesIT'].content} video={cliente['solucionesIT'].url} degrade='#00000067' tarjetas={cliente['solucionesIT'].tarjetas} miniTarjetas={cliente['solucionesIT'].miniTarjetas} id={'solucionesIT'}></Section>}
         {cliente['experiencia'] && <Section subtitle={cliente['experiencia'].titulo} description={cliente['experiencia'].content} video={cliente['experiencia'].url} degrade='#00000067' tarjetas={cliente['experiencia'].tarjetas} miniTarjetas={cliente['experiencia'].miniTarjetas} id={'experiencia'}></Section>}
 
-        <div className='relative  bg-gradient-to-tr from-[#00195c] via-[#364e96] to-[#00195c]'>
+        <div className='relative  bg-gradient-to-t from-[#00195cdc] via-[#00195cb6] to-[#00195cdc]'>
 
 
 
