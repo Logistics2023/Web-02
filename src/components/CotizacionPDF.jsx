@@ -210,7 +210,7 @@ const PDFView = ({ click }) => {
                                     {calcValueFCL !== 'NO DATA' &&
                                         calcValueFCL.map((item) => {
 
-                                            return naviera === item.NAVIERA && <>
+                                            return naviera === item.NAVIERA && selectValue.EQUIPO.includes(item.EQUIPO) && <>
                                                 <View style={styles.box}>
                                                     <Text style={styles.title}>DETALLES</Text>
                                                 </View>
