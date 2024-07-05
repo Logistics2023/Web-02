@@ -275,7 +275,7 @@ export default function Home() {
                 {cliente[query] && cliente[query].tarjetas && <p className='text-white ql-editor' style={{ height: 'auto' }} dangerouslySetInnerHTML={{ __html: cliente[query].tarjetas[route].paragraph }}></p>}
 
             </div>
-            <div className='columns-2 md:columns-4 gap-3 pb-3 p-3 md:p-[50px] bg-[#0000009a]'>
+            <div className='columns-2 md:columns-4 gap-3 pb-3 p-3 md:p-[50px] bg-gradient-to-t from-[#00195c63] via-[#ced0d3d3] to-[#00195cdc]'>
                 {
                     cliente[query] && cliente[query].tarjetas && cliente[query].tarjetas[route].images && Object.entries(cliente[query].tarjetas[route].images).map((i, index) => {
                         return <img src={i[1].url} alt="" className=' mb-3 transition-all shadow-xl hover:scale-125 rounded-5' style={{borderRadius: '5px'}} />
@@ -283,7 +283,7 @@ export default function Home() {
                     })
                 }
             </div>
-            {cliente.Slider1 &&<div className=' bg-gradient-to-tr from-[#00195c] via-[#00195c] to-[#00195c] py-5'>
+            {/* {cliente.Slider1 &&<div className=' bg-gradient-to-tr from-[#00195c] via-[#00195c] to-[#00195c] py-5'>
                 <h1 className='text-center font-bold text-[25px] text-white py-[50px]'>Nuestros Clientes</h1>
                 <Slider content={Object.values(cliente.Slider1)} />
             </div>}
@@ -294,7 +294,7 @@ export default function Home() {
             {cliente.Slider3 && <div className=' bg-gradient-to-tr text-white  from-[#00195c] via-[#00195c] to-[#00195c] py-5'>
                 <h1 className='text-center font-bold text-[25px] py-[50px]'>Empresas</h1>
                 <Slider content={Object.values(cliente.Slider3)} />
-            </div>}
+            </div>} */}
 
             <Footer></Footer>
 
