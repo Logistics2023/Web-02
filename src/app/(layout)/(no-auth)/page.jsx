@@ -301,15 +301,15 @@ export default function Home() {
               <div className='relative bg-[#ffffff] p-5 z-30' >
                 {calcValue === 'NO DATA' && calcValueFCL === 'NO DATA'
                   ? <ul className="flex border-b border-[blue] ">
-                    <li className={`-mb-px mr-1 ${(hash !== '#FCL' && hash !== '#FTL') && 'bg-[#F7BE38] border border-[blue] border-b-transparent'}`} onClick={() => handlerElement('TRACKING')}>
+                    <li className={`-mb-px mr-1 ${(hash !== '#FCL' && hash !== '#FTL') && 'bg-[#F7BE38] border border-[blue] border-b-transparent'}`} onClick={() => {handlerElement('TRACKING')}}>
                       <a className=" inline-block rounded-t py-2 px-2 text-blue-700 font-semibold" href="#Tracking">Tracking</a>
                     </li>
-                    <li className={`-mb-px mr-1 ${((hash === '#FCL')) && 'bg-[#F7BE38] border border-[blue] border-b-transparent'}`} onClick={() => { setSelectValue({}) }}>
+                    <li className={`-mb-px mr-1 ${((hash === '#FCL')) && 'bg-[#F7BE38] border border-[blue] border-b-transparent'}`} onClick={() => { setSelectValue({});handlerElement('FCL') }}>
                       <a className=" inline-block rounded-t py-2 px-2 text-blue-500 font-semibold" href="#FCL">Cotizador FCL</a>
                     </li>
                     {console.log(element)}
                     {console.log(hash)}
-                    <li className={`-mb-px mr-1 ${(hash === '#FTL') && 'bg-[#F7BE38] border border-[blue] border-b-transparent'}`} onClick={() => { setSelectValue({}) }}>
+                    <li className={`-mb-px mr-1 ${(hash === '#FTL') && 'bg-[#F7BE38] border border-[blue] border-b-transparent'}`} onClick={() => { setSelectValue({});handlerElement('FTL') }}>
                       <a className=" inline-block rounded-t py-2 px-2 text-blue-500  font-semibold" href="#FTL">Cotizador FTL</a>
                     </li>
                   </ul>
@@ -336,7 +336,7 @@ export default function Home() {
                     <InputEspecial type='text' data={inputRef.current ? Object.values(cliente.priceFCL).filter((i) => i.ORIGEN === inputRef.current.value) : Object.values(cliente.priceFTL)} node={'Destino'} focusTxt='DESTINO-FTL' id='floating_2' inputRef={inputRef2} select={handlerSelect2} style={{ textTransform: 'uppercase' }}></InputEspecial>
                     <SelectSimple arr={inputRef.current && Object.values(cliente.priceFCL).filter((i) => i.ORIGEN === inputRef.current.value && i.DESTINO === inputRef2.current.value).map((i) => i.EQUIPO).filter(onlyUnique).length > 0 ? Object.values(cliente.priceFCL).filter((i) => i.ORIGEN === inputRef.current.value && i.DESTINO === inputRef2.current.value).map((i) => i.EQUIPO).filter(onlyUnique) : equipoDB} name='EQUIPO' click={handlerClickSelect} defaultValue={selectValue['EQUIPO'] ? selectValue['EQUIPO'] : 'Seleccionar'} uuid='8768798' label='Equipo' required={true}></SelectSimple>
                     {inputRef.current && Object.values(cliente.priceFCL).filter((i) => i.ORIGEN === inputRef.current.value && i.DESTINO === inputRef2.current.value).map((i) => i.EQUIPO).filter(onlyUnique) && Object.values(cliente.priceFCL).filter((i) => i.ORIGEN === inputRef.current.value && i.DESTINO === inputRef2.current.value).map((i) => i.EQUIPO).filter(onlyUnique).length > 0
-                      ? <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px] w-full  px-5 py-2.5 text-center  mt-7 lg:col-span-2"  >Cotizar</button>
+                      ? <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px] w-full  px-5 py-2.5 text-center  mt-7 lg:col-span-2" onClick={()=>handlerElement('FCL')} >Cotizar</button>
                       : <button type="button" className=" focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px] w-full  px-5 py-2.5 text-center  mt-7 lg:col-span-2          text-white bg-green-500    " onClick={HandlerCheckOut2}> Solicitar Cotizacion</button>
                     }
                   </form>}
@@ -359,7 +359,7 @@ export default function Home() {
                       </div>}
                     </div>
                     {preValidate()
-                      ? <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px] w-full  px-5 py-2.5 text-center  mt-7 lg:col-span-2">Cotizar</button>
+                      ? <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px] w-full  px-5 py-2.5 text-center  mt-7 lg:col-span-2" onClick={()=>handlerElement('FTL')}>Cotizar</button>
                       : <button type="submit" className=" focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px] w-full  px-5 py-2.5 text-center  mt-7 lg:col-span-2          text-white bg-green-500     " onClick={HandlerCheckOut2}>Solicitar Cotizacion</button>
                     }
                   </form>
