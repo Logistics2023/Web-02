@@ -68,10 +68,13 @@ export default function Home() {
                                 </div>
                             </div>
 
-                            <label htmlFor="first-name" className="block text-[12px] font-medium leading-6 text-gray-900">IMG url</label>
+                            <label htmlFor="first-name" className="block text-[12px] font-medium leading-6 text-gray-900">Url</label>
                             <input type="text" name={`url`} onChange={(e) => onChangeHandler3(e)} className="block w-full rounded-md border-0 p-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-[12px] sm:leading-6" defaultValue={data3[`url`]} />
                             <label htmlFor="first-name" className="block text-[12px] font-medium leading-6 text-gray-900">Titulo</label>
                             <input type="text" name={`title`} onChange={(e) => onChangeHandler3(e)} className="block w-full rounded-md border-0 p-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-[12px] sm:leading-6" defaultValue={data3[`title`]} />
+                            <label htmlFor="first-name" className="block text-[12px] font-medium leading-6 text-gray-900">hash</label>
+                            <input type="text" name={`hash`} onChange={(e) => onChangeHandler3(e)} className="block w-full rounded-md border-0 p-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-[12px] sm:leading-6" defaultValue={data3[`hash`]} />
+                            
                             <label htmlFor="first-name" className="block text-[12px] font-medium leading-6 text-gray-900">Descripción</label>
                             <TextEditorSimple value={data3[`paragraph`]} setValue={(e) => onChangeHandler4(e)} edit={true} ></TextEditorSimple>
                             <br />

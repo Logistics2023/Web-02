@@ -68,6 +68,11 @@ export default function BottomNavigation({ rol }) {
     }, [lastScrollY, show, filter]);
     return <>
         <nav className={`fixed  w-screen   transition-all ${pathname == '/Glosario' ? ' bg-gradient-to-br from-[#00195c] via-[#274492] to-[#00195c]' : ''} z-40  ${show ? 'top-0' : 'top-[-100px]'} transition-all  ${scrollY > 500 ? 'bg-[#101c3fd5] lg:border-b lg:border-gray-200' : ''}`}>
+        {/* <div className='absolute top-0 justify-space-between'>
+            <div id='Tracking'></div>
+            <div id='FTL'></div>
+            <div id='FCL'></div>
+          </div> */}
             <Translator from='es' to={languaje.slice(0, 2).toLowerCase()}>
                 <div className="w-screen flex items-center justify-between mx-auto py-4 px-4 lg:px-8 ">
                     <Link href="/" className="flex items-center">

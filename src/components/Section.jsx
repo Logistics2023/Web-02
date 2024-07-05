@@ -67,6 +67,34 @@ function Componente({ title, image, paragraph, id, route }) {
 
 }
 
+function Componente3({ title, image, paragraph, id, route, hash }) {
+  const { cliente, languaje } = useUser()
+
+  const router = useRouter()
+  // console.log(paragraph)
+  return (
+    <Translator from='es' to={languaje.slice(0, 2).toLowerCase()}>
+      <div className='relative w-full min-h-full md:w-auto bg-[#ffffffcb] my-5 flex  lg:max-w-[500px] lg:min-w-[250px]  lg:text-[18px] lg:mx-5 lg:flex lg:flex-col lg:justify-between lg:items-center rounded-[15px] '>
+        <img src={image} className="relative w-[150px] md:min-h-[40%] lg:max-w-[200px] object-contain p-5" alt="" />
+        <div className="relative w-full bg-gradient-to-t md:min-h-[45%] from-[#00195cbe] via-[#00195cbe] to-[#00195c] space-y-5 p-5 py-5 rounded-r-[15px] lg:rounded-t-[0]  lg:rounded-b-[15px]">
+          <h4 className="w-full text-left font-medium border-b-[3px] text-white pb-5 pl-0 ml-0 border-[#ffffff] p-5">{title}</h4>
+          <p className="relative text-white "  >
+            {paragraph !== undefined && parse(paragraph)}
+          </p>
+          {console.log(hash)}
+          <div className=" relative flex mt-5 mb-10 justify-end w-[100%]">
+            <a href={hash}>
+              <button className="block bg-[#ffb834] px-3 text-[12px] border text-center font-medium py-2 m-1  
+         cursor-pointer rounded-[5px]">Ir a Herramienta</button>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </Translator>)
+
+}
+
 function Componente2({ title, image, paragraph, id, route }) {
   const { cliente, languaje } = useUser()
 
@@ -108,9 +136,9 @@ export default function Section({ subtitle, description, video, gradiente, id, c
   const redirectHandlerWindow = (ref) => {
     window.open(ref, '_blank')
   }
-  subtitle === 'ASESORAMIENTO Y DESPACHOS ADUANEROS' && console.log(subtitle)
-  subtitle === 'ASESORAMIENTO Y DESPACHOS ADUANEROS' && console.log(description)
-  subtitle === 'ASESORAMIENTO Y DESPACHOS ADUANEROS' && console.log(data)
+  // subtitle === 'ASESORAMIENTO Y DESPACHOS ADUANEROS' && console.log(subtitle)
+  // subtitle === 'ASESORAMIENTO Y DESPACHOS ADUANEROS' && console.log(description)
+  // subtitle === 'ASESORAMIENTO Y DESPACHOS ADUANEROS' && console.log(data)
   useEffect(() => {
     // const fetchData = async () => {
     //   const db = await getTranslation(description, 'es', languaje.slice(0, 2).toLowerCase())
@@ -174,8 +202,10 @@ export default function Section({ subtitle, description, video, gradiente, id, c
         <div className={`relative flex flex-wrap py-10 ${tarjetas && Object.entries(tarjetas).length > 2 ? 'md:grid md:grid-cols-3' : 'md:grid md:grid-cols-2'}`}>
           {cliente && cliente[id] && cliente[id].tarjetas && Object.entries(tarjetas).map((i, index) => {
             return <div className=' w-full  md:w-auto p-5 z-50' key={index}>
-              {id !== 'experiencia' && <Componente route={i[0]} id={id} db={i[1]} title={i[1].title} image={i[1].url} paragraph={i[1].paragraph} />}
+              {id !== 'experiencia' && id !== 'solucionesIT' &&<Componente route={i[0]} id={id} db={i[1]} title={i[1].title} image={i[1].url} paragraph={i[1].paragraph} />}
               {id === 'experiencia' && <Componente2 route={i[0]} id={id} db={i[1]} title={i[1].title} image={i[1].url} paragraph={i[1].paragraph} />}
+              {id === 'solucionesIT' && <Componente3 route={i[0]} hash={i[1].hash} id={id} db={i[1]} title={i[1].title} image={i[1].url} paragraph={i[1].paragraph} />}
+
             </div>
           })}
         </div>

@@ -34,6 +34,9 @@ import { equipoDB, mercanciaDB, tipoDeUnidadDB } from '@/db/arrDB'
 import { Translator, getTranslation } from '@miracleufo/react-g-translator';
 import parse from 'html-react-parser';
 
+import { useHash } from '@/HOCs/useHash';
+
+
 const InvoicePDF = dynamic(() => import("@/components/CotizacionPDF"), {
   ssr: false,
 });
@@ -44,7 +47,9 @@ export default function Home() {
 
   const [selectValue, setSelectValue] = useState({})
   const [code, setCode] = useState('')
+  const hash = useHash();
 
+  // const [hash, sethash] = useState('')
 
 
   const router = useRouter()
@@ -244,11 +249,25 @@ export default function Home() {
       return val
     }
   }
-  return (                
+
+  console.log(hash)
+  useEffect(() => {
+    // const section = hash.replace("#", "");
+    // if (section) scrollToSection(section);
+  }, [hash]);
+
+  return (
     <main className={`relative  w-screen `} onClick={reset} id='inicio'>
+        <div className='absolute top-0 justify-space-between'>
+            <div id='Tracking'></div>
+            <div id='FTL'></div>
+            <div id='FCL'></div>
+          </div>
       <Translator from='es' to={languaje.slice(0, 2).toLowerCase()} shouldFallback={() => setUserSuccess('')}>
 
-        <section className='relative '>
+        <section className='relative ' >
+        
+
           <video className='fixed bottom-0 w-full h-[100vh] pb-[10px] object-cover object-bottom ' autoPlay loop muted playsInline>
             <source src={cliente.inicio.url} type="video/mp4" />
           </video>
@@ -256,10 +275,11 @@ export default function Home() {
           <div className='relative min-h-[100vh] h-auto   w-full lg:pt-[70px] pb-0 flex flex-col justify-around lg:flex-row items-center  z-20' style={{ background: '-gradient(to bottom, #000000,  #000000c7, #00000050' }}>
             <img src='/logo-comp.gif' className=' relative  inline-block w-[80vw] h-[80vw]    lg:w-[30vw] lg:h-[60vh]  object-cover object-center ' />
             <div className='relative  w-full lg:w-[40%] lg:bg-[#111a33d0] p-5 '>
+
               <div className='   font-bold'>
                 <TextMaquina />
               </div>
-              <br />      
+              <br />
               <div className='grid grid-cols-2 gap-2 w-full '>
                 {/* <button onClick={write}>Click</button> */}
                 <button type="button" onClick={() => router.push('/Glosario')} className="w-full border-[2px]   text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-[12px] px-5 py-2.5 text-center inline-flex items-center ">
@@ -276,22 +296,24 @@ export default function Home() {
                 </button>
               </div>
               <br />
-              <div className='relative bg-[#ffffff] p-5 z-30'>
+              <div className='relative bg-[#ffffff] p-5 z-30' >
                 {calcValue === 'NO DATA' && calcValueFCL === 'NO DATA'
                   ? <ul className="flex border-b border-[blue] ">
-                    <li className={`-mb-px mr-1 ${element === 'TRACKING' && 'bg-[#F7BE38] border border-[blue] border-b-transparent'}`} onClick={() => handlerElement('TRACKING')}>
-                      <a className=" inline-block rounded-t py-2 px-2 text-blue-700 font-semibold" href="#">Tracking</a>
+                    <li className={`-mb-px mr-1 ${(hash !== '#FCL' && hash !== '#FTL') && 'bg-[#F7BE38] border border-[blue] border-b-transparent'}`} onClick={() => handlerElement('TRACKING')}>
+                      <a className=" inline-block rounded-t py-2 px-2 text-blue-700 font-semibold" href="#Tracking">Tracking</a>
                     </li>
-                    <li className={`-mb-px mr-1 ${element === 'FCL' && 'bg-[#F7BE38] border border-[blue] border-b-transparent'}`} onClick={() => { setSelectValue({}), handlerElement('FCL') }}>
-                      <a className=" inline-block rounded-t py-2 px-2 text-blue-500 font-semibold" href="#">Cotizador FCL</a>
+                    <li className={`-mb-px mr-1 ${((hash === '#FCL')) && 'bg-[#F7BE38] border border-[blue] border-b-transparent'}`} onClick={() => { setSelectValue({}) }}>
+                      <a className=" inline-block rounded-t py-2 px-2 text-blue-500 font-semibold" href="#FCL">Cotizador FCL</a>
                     </li>
-                    <li className={`-mb-px mr-1 ${element === 'FTL' && 'bg-[#F7BE38] border border-[blue] border-b-transparent'}`} onClick={() => { setSelectValue({}), handlerElement('FTL') }}>
-                      <a className=" inline-block rounded-t py-2 px-2 text-blue-500  font-semibold" href="#">Cotizador FTL</a>
+                    {console.log(element)}
+                    {console.log(hash)}
+                    <li className={`-mb-px mr-1 ${(hash === '#FTL') && 'bg-[#F7BE38] border border-[blue] border-b-transparent'}`} onClick={() => { setSelectValue({}) }}>
+                      <a className=" inline-block rounded-t py-2 px-2 text-blue-500  font-semibold" href="#FTL">Cotizador FTL</a>
                     </li>
                   </ul>
                   : <div className='w-full text-center bg-blue-700 text-white p-2'>  COTIZACIÓN {element}  </div>
                 }
-                {element === 'TRACKING' && <form className="max-w-md w-full flex  mx-auto pt-5">
+                {(hash !== '#FCL' && hash !== '#FTL') && <form className="max-w-md w-full flex  mx-auto pt-5">
                   <div className="flex w-full ">
                     <label htmlFor="location-search" className="mb-2 text-[12px] font-medium text-gray-900 sr-only dark:text-white">Your Email</label>
                     <div className="relative w-full">
@@ -306,7 +328,7 @@ export default function Home() {
                   </div>
                 </form>}
 
-                {element === 'FCL' && calcValue === 'NO DATA' && calcValueFCL === 'NO DATA' &&
+                {((hash === '#FCL') && calcValue === 'NO DATA' && calcValueFCL === 'NO DATA') &&
                   <form className="space-y-5 lg:space-y-0 py-5 lg:grid lg:grid-cols-2 lg:gap-5" onSubmit={calculatorFCL}>
                     <InputEspecial type='text' data={Object.values(cliente.priceFCL)} node={'Origen'} focusTxt='ORIGEN-FTL' id='floating_1' inputRef={inputRef} select={handlerSelect}></InputEspecial>
                     <InputEspecial type='text' data={inputRef.current ? Object.values(cliente.priceFCL).filter((i) => i.ORIGEN === inputRef.current.value) : Object.values(cliente.priceFTL)} node={'Destino'} focusTxt='DESTINO-FTL' id='floating_2' inputRef={inputRef2} select={handlerSelect2} style={{ textTransform: 'uppercase' }}></InputEspecial>
@@ -316,7 +338,7 @@ export default function Home() {
                       : <button type="button" className=" focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px] w-full  px-5 py-2.5 text-center  mt-7 lg:col-span-2          text-white bg-green-500    " onClick={HandlerCheckOut2}> Solicitar Cotizacion</button>
                     }
                   </form>}
-                {element === 'FTL' && calcValue === 'NO DATA' && calcValueFCL === 'NO DATA' &&
+                {((hash === '#FTL') && calcValue === 'NO DATA' && calcValueFCL === 'NO DATA') &&
                   <form className="space-y-5 lg:space-y-0  py-5 lg:grid lg:grid-cols-2 lg:gap-5" onSubmit={calculator}>
                     <InputEspecial type='text' data={Object.values(cliente.priceFTL)} node={'Origen'} focusTxt='ORIGEN-FTL' id='floating_1' inputRef={inputRef} select={handlerSelect}></InputEspecial>
                     <InputEspecial type='text' data={inputRef.current ? Object.values(cliente.priceFTL).filter((i) => i.ORIGEN === inputRef.current.value) : Object.values(cliente.priceFTL)} node={'Destino'} focusTxt='DESTINO-FTL' id='floating_2' inputRef={inputRef2} select={handlerSelect2} style={{ textTransform: 'uppercase' }}></InputEspecial>
