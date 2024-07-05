@@ -239,7 +239,7 @@ export default function Home() {
 
   // console.log(inputRef.current.value)
   // console.log(inputRef2.current.value)
-  console.log(cliente.inicio.content)
+  // console.log(cliente.inicio.content)
 
   function preValidate() {
     if (inputRef.current && inputRef2.current && selectValue.MERCANCIA && selectValue['PESO (KG)'] && selectValue.SERVICIO && selectValue['TIPO DE UNIDAD'] && selectValue['VOLUMEN M3']) {
@@ -254,7 +254,7 @@ export default function Home() {
   useEffect(() => {
     // const section = hash.replace("#", "");
     // if (section) scrollToSection(section);
-  }, [hash]);
+  }, [hash, languaje]);
 
   return (
     <main className={`relative  w-screen `} onClick={reset} id='inicio'>
@@ -277,7 +277,7 @@ export default function Home() {
             <div className='relative  w-full lg:w-[40%] lg:bg-[#111a33d0] p-5 '>
 
               <div className='   font-bold'>
-                <TextMaquina />
+             {  success !== '' &&  <TextMaquina />}
               </div>
               <br />
               <div className='grid grid-cols-2 gap-2 w-full '>
@@ -483,7 +483,7 @@ export default function Home() {
           <div className='relative px-5 py-12 w-full flex flex-col  lg:grid lg:grid-cols-2 justify-around items-center   bg-gradient-to-t from-[#00195cdc] via-[#00195cb6] to-[#00195cdc] ' id='Nosotros'>
             <div>
 
-              <Subtitle><h3 className='text-[30px] text-[white] text-center font-medium  py-5'>{cliente.inicio.titulo}</h3></Subtitle>
+              <Subtitle><h3 className='text-[30px] text-[white] text-center font-medium  py-5'>{languaje === 'Español' ?cliente.inicio.titulo: 'About  Us'}</h3></Subtitle>
               <ScrollAnimation animateIn='bounceInRight'
                 animateOut='bounceOutLeft'
                 initiallyVisible={true}

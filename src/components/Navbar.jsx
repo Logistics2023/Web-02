@@ -52,23 +52,23 @@ export default function BottomNavigation({ rol }) {
 
 
     function handlerClickSelect(name, i, uuid) {
-        setUserSuccess('Change')
+        i === 'Español' ? '' : setUserSuccess('Change')
         setLanguaje(i)
         setTimeout(() => {
             setUserSuccess('')
-          }, 8000);
+        }, 3000);
     }
 
-    
+
 
 
     useEffect(() => {
         window.addEventListener('scroll', controlNavbar);
         return () => window.removeEventListener('scroll', controlNavbar);
-    }, [lastScrollY, show, filter]);
+    }, [lastScrollY, show, filter, languaje]);
     return <>
         <nav className={`fixed  w-screen   transition-all ${pathname == '/Glosario' ? ' bg-gradient-to-br from-[#00195c] via-[#274492] to-[#00195c]' : ''} z-40  ${show ? 'top-0' : 'top-[-100px]'} transition-all  ${scrollY > 500 ? 'bg-gradient-to-t from-[#00195cdc] via-[#00195cb6] to-[#00195cdc] lg:border-b lg:border-gray-200' : ''}`}>
-        {/* <div className='absolute top-0 justify-space-between'>
+            {/* <div className='absolute top-0 justify-space-between'>
             <div id='Tracking'></div>
             <div id='FTL'></div>
             <div id='FCL'></div>
@@ -124,7 +124,7 @@ export default function BottomNavigation({ rol }) {
 
                         <ul className="list-none font-medium flex flex-col p-4 md:p-0 mt-0 rounded-lg md:flex-row md:items-center md:space-x-8  ">
                             <li onClick={() => handlerNavItem('Inicio')}>
-                                <Link href='/#inicio' className={`block py-2 pl-3 pr-4 text-[14px] rounded   md:border-0  md:p-0   transition-all hover:text-[#F1BA06] cursor-pointer z-30 ${navItem === 'Inicio' ? 'text-[#F1BA06]' : 'text-white'}`}>Inicio</Link>
+                                <Link href='/#inicio' className={`block py-2 pl-3 pr-4 text-[14px] rounded   md:border-0  md:p-0   transition-all hover:text-[#F1BA06] cursor-pointer z-30 ${navItem === 'Inicio' ? 'text-[#F1BA06]' : 'text-white'}`}>{languaje === 'Español' ? 'Inicio' : 'Home'}</Link>
                             </li>
                             <li onClick={() => handlerNavItem('Servicios')}>
                                 <Link href="#" className={`block py-2 pl-3 pr-4 text-[14px] rounded   md:border-0  md:p-0   transition-all hover:text-[#F1BA06] cursor-pointer z-30 ${navItem === 'Servicios' ? 'text-[#F1BA06]' : 'text-white'}`}>Servicios</Link>
