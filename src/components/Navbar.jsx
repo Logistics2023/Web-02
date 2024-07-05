@@ -67,7 +67,7 @@ export default function BottomNavigation({ rol }) {
         return () => window.removeEventListener('scroll', controlNavbar);
     }, [lastScrollY, show, filter]);
     return <>
-        <nav className={`fixed  w-screen   transition-all ${pathname == '/Glosario' ? ' bg-gradient-to-br from-[#00195c] via-[#274492] to-[#00195c]' : ''} z-40  ${show ? 'top-0' : 'top-[-100px]'} transition-all  ${scrollY > 500 ? 'bg-[#101c3fd5] lg:border-b lg:border-gray-200' : ''}`}>
+        <nav className={`fixed  w-screen   transition-all ${pathname == '/Glosario' ? ' bg-gradient-to-br from-[#00195c] via-[#274492] to-[#00195c]' : ''} z-40  ${show ? 'top-0' : 'top-[-100px]'} transition-all  ${scrollY > 500 ? 'bg-gradient-to-t from-[#00195cdc] via-[#00195cb6] to-[#00195cdc] lg:border-b lg:border-gray-200' : ''}`}>
         {/* <div className='absolute top-0 justify-space-between'>
             <div id='Tracking'></div>
             <div id='FTL'></div>

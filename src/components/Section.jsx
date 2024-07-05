@@ -157,7 +157,7 @@ export default function Section({ subtitle, description, video, gradiente, id, c
 
   return <Translator from='es' to={languaje.slice(0, 2).toLowerCase()}>
 
-    <section className='relative w-full  bg-gradient-to-tr from-[#00195c] via-[#274492] to-[#00195c] overflow-x-hidden overflow-hidden' id={id}>
+    <section className='relative w-full   bg-gradient-to-tr from-[#00195c] via-[#384C94] to-[#00195c] overflow-x-hidden overflow-hidden' id={id}>
       {/* <div className='relative px-5 py-12 w-full min-h-[50vh] flex flex-col z-30 lg:grid lg:grid-cols-2 justify-around items-center  from-[#00195cdc] via-[#00195cb6] to-[#00195cdc] '> */}
 
       <div className='relative px-5 py-12 w-full lg:px-[100px]  z-30    from-[#00195cdc] via-[#00195cb6] to-[#00195cdc] '>
@@ -197,7 +197,7 @@ export default function Section({ subtitle, description, video, gradiente, id, c
         <video className='absolute bottom-0  w-full h-full min-h-[100vh] object-cover z-10' autoPlay loop muted playsInline>
           <source src={video} type="video/mp4" />
         </video>
-        <div className='absolute top-0 w-full min-h-[100vh] h-full object-cover z-20 bg-gradient-to-tr from-[#00195c]  via-[#cfbd7546] to-[#00195c]    lg:bg-gradient-to-tr lg:from-[#00195cd7]  lg:via-[#cfbd7546] lg:to-[#00195c] '></div>
+        <div className='absolute top-0 w-full min-h-[100vh] h-full object-cover z-20 bg-gradient-to-tr from-[#00195c]  via-[#cfbd7546] to-[#00195c]    lg:bg-gradient-to-tr lg:from-[#00195c]  lg:via-[#00195c36] lg:to-[#00195c] '></div>
 
         <div className={`relative flex flex-wrap py-10 ${tarjetas && Object.entries(tarjetas).length > 2 ? 'md:grid md:grid-cols-3' : 'md:grid md:grid-cols-2'}`}>
           {cliente && cliente[id] && cliente[id].tarjetas && Object.entries(tarjetas).map((i, index) => {

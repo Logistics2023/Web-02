@@ -1,6 +1,7 @@
 'use client'
 import { useUser } from '@/context/Context'
 import { Translator, getTranslation } from '@miracleufo/react-g-translator';
+import Slider from '@/components/Slider'
 
 export default function Home() {
   const { cliente, languaje } = useUser()
@@ -8,9 +9,22 @@ export default function Home() {
   return (
 <Translator from='es' to={languaje.slice(0, 2).toLowerCase()}>
     <footer className="relative w-screen  text-center text-white pb-[70px] lg:pb-0 z-50" id="Contactos">
-      <div className=' bg-gradient-to-tr from-[#00195c] via-[#00195c] to-[#00195c]'>
+      <div className='  bg-gradient-to-tr from-[#00195c] via-[#384C94] to-[#00195c]'>
 
+      {cliente.Slider1 && <div className='relative   '>
+            <h1 className='text-center font-bold text-[25px] py-[50px] text-white '>Nuestros Clientes</h1>
+            <Slider content={Object.values(cliente.Slider1)} />
+          </div>}
 
+          {cliente.Slider2 && <div className='relative '>
+            <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>Socios  Comerciales</h1>
+            <Slider content={Object.values(cliente.Slider2)} />
+          </div>}
+
+          {cliente.Slider3 && <div className='relative '>
+            <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>Empresas</h1>
+            <Slider content={Object.values(cliente.Slider3)} />
+          </div>}
         <div className="p-4 ">
           <h3 className={`w-full text-white text-left font-bold text-[26px] pl-[5px]`}>Contactos</h3>
           <br />

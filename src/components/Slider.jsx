@@ -15,14 +15,35 @@ function Responsive({ content }) {
 		cssEase: "linear",
 		pauseOnHover: false,
 		arrows: false,
+		responsive: [
+			{
+			  breakpoint: 1024,
+			  settings: {
+				slidesToShow: 3,
+			  }
+			},
+			{
+			  breakpoint: 600,
+			  settings: {
+				slidesToShow: 2,
+			  }
+			},
+			{
+			  breakpoint: 480,
+			  settings: {
+				slidesToShow: 2,
+
+			  }
+			}
+		  ]
 
 	};
 	return (
-		<div className="slider-container  py-[50px]">
+		<div className="slider-container pt-[0px] pb-[100px] md:py-[50px]">
 			<Slider {...settings} autoplay={true}>
 				{content.map((item, index) => (
 					<div>
-						<img className='h-[100px] w-auto' src={item.url} alt="" />
+						<img className='h-[50px] md:h-[100px] w-auto' src={item.url} alt="" />
 					</div>
 				))}
 			</Slider>
