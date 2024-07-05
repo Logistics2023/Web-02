@@ -268,14 +268,14 @@ export default function Home() {
     return (cliente && <div className="min-h-full">
         <img src="/airplane-bg.jpg" className='fixed  w-screen h-screen  object-cover z-40 ' alt="" />
 
-        <div className="fixed   md:pb-0 top-0 left-0 h-screen w-full overflow-y-auto bg-[#000000b4] p-0 z-40 " >
-            <div className=' md:p-[50px] py-[20px]'>
+        <div className="fixed   md:pb-0 top-0 left-0 h-screen w-full overflow-y-auto  p-0 z-40 " >
+            <div className=' md:p-[50px] py-[20px] bg-gradient-to-t from-[#00195cdc] via-[#00195cb6] to-[#00195cdc] p-0 z-40 '>
 
                 <h1 className='text-white text-[25px] text-center font-bold'>{cliente[query] && cliente[query].tarjetas[route].title}</h1>
                 {cliente[query] && cliente[query].tarjetas && <p className='text-white ql-editor' style={{ height: 'auto' }} dangerouslySetInnerHTML={{ __html: cliente[query].tarjetas[route].paragraph }}></p>}
 
             </div>
-            <div className='columns-2 md:columns-4 gap-3 pb-3 p-3 md:p-[50px]'>
+            <div className='columns-2 md:columns-4 gap-3 pb-3 p-3 md:p-[50px] bg-[#0000009a]'>
                 {
                     cliente[query] && cliente[query].tarjetas && cliente[query].tarjetas[route].images && Object.entries(cliente[query].tarjetas[route].images).map((i, index) => {
                         return <img src={i[1].url} alt="" className=' mb-3 transition-all shadow-xl hover:scale-125 rounded-5' style={{borderRadius: '5px'}} />
@@ -283,15 +283,15 @@ export default function Home() {
                     })
                 }
             </div>
-            {cliente.Slider1 &&<div className='bg-gray-100 py-5'>
-                <h1 className='text-center font-bold text-[25px] py-[50px]'>Nuestros Clientes</h1>
+            {cliente.Slider1 &&<div className=' bg-gradient-to-tr from-[#00195c] via-[#00195c] to-[#00195c] py-5'>
+                <h1 className='text-center font-bold text-[25px] text-white py-[50px]'>Nuestros Clientes</h1>
                 <Slider content={Object.values(cliente.Slider1)} />
             </div>}
-            {cliente.Slider2 &&  <div className='bg-gray-100 py-5'>
-                <h1 className='text-center font-bold text-[25px] py-[50px]'>Socios  Comerciales</h1>
+            {cliente.Slider2 &&  <div className=' bg-gradient-to-tr from-[#00195c] via-[#00195c] to-[#00195c]py-5'>
+                <h1 className='text-center font-bold text-white  text-[25px] py-[50px]'>Socios  Comerciales</h1>
                 <Slider content={Object.values(cliente.Slider2)} />
             </div>}
-            {cliente.Slider3 && <div className='bg-gray-100 py-5'>
+            {cliente.Slider3 && <div className=' bg-gradient-to-tr text-white  from-[#00195c] via-[#00195c] to-[#00195c] py-5'>
                 <h1 className='text-center font-bold text-[25px] py-[50px]'>Empresas</h1>
                 <Slider content={Object.values(cliente.Slider3)} />
             </div>}
