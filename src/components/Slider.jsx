@@ -39,7 +39,7 @@ function Responsive({ content }) {
 
 	};
 	return (
-		<div className="slider-container pt-[0px] pb-[100px] md:py-[50px]">
+		<div className="slider-container">
 			<Slider {...settings} autoplay={true}>
 				{content.map((item, index) => (
 					<div>

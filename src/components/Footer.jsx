@@ -11,7 +11,7 @@ export default function Home() {
     <footer className="relative w-screen  text-center text-white pb-[70px] lg:pb-0 z-50" id="Contactos">
       <div className='  bg-gradient-to-tr from-[#00195c] via-[#384C94] to-[#00195c]'>
 
-      {cliente.Slider1 && <div className='relative   '>
+      {cliente.Slider1 && <div className='relative  pb-[100px] '>
             <h1 className='text-center font-bold text-[25px] py-[50px] text-white '>Nuestros Clientes</h1>
             <Slider content={Object.values(cliente.Slider1)} />
           </div>}
