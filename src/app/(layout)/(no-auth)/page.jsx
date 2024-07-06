@@ -264,7 +264,6 @@ export default function Home() {
         <div id='FTL'></div>
         <div id='FCL'></div>
       </div>
-      <Translator from='es' to={languaje.slice(0, 2).toLowerCase()} shouldFallback={() => setUserSuccess('')}>
 
         <section className='relative ' >
 
@@ -300,19 +299,19 @@ export default function Home() {
               <div className='relative bg-[#ffffff] p-5 z-30' >
                 {calcValue === 'NO DATA' && calcValueFCL === 'NO DATA'
                   ? <ul className="flex border-b border-[blue] ">
-                    <li className={`-mb-px mr-1 ${(hash !== '#FCL' && hash !== '#FTL') && 'bg-[#F7BE38] border border-[blue] border-b-transparent'}`} onClick={() => {handlerElement('TRACKING')}}>
+                    <li className={`-mb-px mr-1 ${(hash !== '#FCL' && hash !== '#FTL') && 'bg-[#F7BE38] border border-[blue] border-b-transparent'}`} onClick={() => { handlerElement('TRACKING') }}>
                       <a className=" inline-block rounded-t py-2 px-2 text-blue-700 font-semibold" href="#Tracking">Tracking</a>
                     </li>
-                    <li className={`-mb-px mr-1 ${((hash === '#FCL')) && 'bg-[#F7BE38] border border-[blue] border-b-transparent'}`} onClick={() => { setSelectValue({});handlerElement('FCL') }}>
-                      <a className=" inline-block rounded-t py-2 px-2 text-blue-500 font-semibold" href="#FCL">Cotizador FCL</a>
+                    <li className={`-mb-px mr-1 ${((hash === '#FCL')) && 'bg-[#F7BE38] border border-[blue] border-b-transparent'}`} onClick={() => { setSelectValue({}); handlerElement('FCL') }}>
+                      <a className=" inline-block rounded-t py-2 px-2 text-blue-500 font-semibold" href="#FCL">{languaje === 'Español' ? 'Cotizador FCL' : 'Quote FCL'}</a>
                     </li>
                     {console.log(element)}
                     {console.log(hash)}
-                    <li className={`-mb-px mr-1 ${(hash === '#FTL') && 'bg-[#F7BE38] border border-[blue] border-b-transparent'}`} onClick={() => { setSelectValue({});handlerElement('FTL') }}>
-                      <a className=" inline-block rounded-t py-2 px-2 text-blue-500  font-semibold" href="#FTL">Cotizador FTL</a>
+                    <li className={`-mb-px mr-1 ${(hash === '#FTL') && 'bg-[#F7BE38] border border-[blue] border-b-transparent'}`} onClick={() => { setSelectValue({}); handlerElement('FTL') }}>
+                      <a className=" inline-block rounded-t py-2 px-2 text-blue-500  font-semibold" href="#FTL">{languaje === 'Español' ? 'Cotizador FTL' : 'Quote  FTL'}</a>
                     </li>
                   </ul>
-                  : <div className='w-full text-center bg-blue-700 text-white p-2'>  COTIZACIÓN {element}  </div>
+                  : <div className='w-full text-center bg-blue-700 text-white p-2'>  {languaje === 'Español' ? 'COTIZACIÓN' : 'PRICE'} {element}  </div>
                 }
                 {(hash !== '#FCL' && hash !== '#FTL') && <form className="max-w-md w-full flex  mx-auto pt-5">
                   <div className="flex w-full ">
@@ -335,7 +334,7 @@ export default function Home() {
                     <InputEspecial type='text' data={inputRef.current ? Object.values(cliente.priceFCL).filter((i) => i.ORIGEN === inputRef.current.value) : Object.values(cliente.priceFTL)} node={'Destino'} focusTxt='DESTINO-FTL' id='floating_2' inputRef={inputRef2} select={handlerSelect2} style={{ textTransform: 'uppercase' }}></InputEspecial>
                     <SelectSimple arr={inputRef.current && Object.values(cliente.priceFCL).filter((i) => i.ORIGEN === inputRef.current.value && i.DESTINO === inputRef2.current.value).map((i) => i.EQUIPO).filter(onlyUnique).length > 0 ? Object.values(cliente.priceFCL).filter((i) => i.ORIGEN === inputRef.current.value && i.DESTINO === inputRef2.current.value).map((i) => i.EQUIPO).filter(onlyUnique) : equipoDB} name='EQUIPO' click={handlerClickSelect} defaultValue={selectValue['EQUIPO'] ? selectValue['EQUIPO'] : 'Seleccionar'} uuid='8768798' label='Equipo' required={true}></SelectSimple>
                     {inputRef.current && Object.values(cliente.priceFCL).filter((i) => i.ORIGEN === inputRef.current.value && i.DESTINO === inputRef2.current.value).map((i) => i.EQUIPO).filter(onlyUnique) && Object.values(cliente.priceFCL).filter((i) => i.ORIGEN === inputRef.current.value && i.DESTINO === inputRef2.current.value).map((i) => i.EQUIPO).filter(onlyUnique).length > 0
-                      ? <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px] w-full  px-5 py-2.5 text-center  mt-7 lg:col-span-2" onClick={()=>handlerElement('FCL')} >Cotizar</button>
+                      ? <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px] w-full  px-5 py-2.5 text-center  mt-7 lg:col-span-2" onClick={() => handlerElement('FCL')} >Cotizar</button>
                       : <button type="button" className=" focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px] w-full  px-5 py-2.5 text-center  mt-7 lg:col-span-2          text-white bg-green-500    " onClick={HandlerCheckOut2}> Solicitar Cotizacion</button>
                     }
                   </form>}
@@ -350,15 +349,15 @@ export default function Home() {
                     <div className='flex  justify-around col-span-2'>
                       <div class="flex items-center ">
                         <input id="checkbox_1" type="checkbox" checked={selectValue['SERVICIO'] === 'SIN DEVOLUCION'} value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-100 focus:ring-1 " onClick={() => handlerClickSelect2('SIN DEVOLUCION')} />
-                        <label for="checkbox_1" class="ms-2 text-sm font-medium text-gray-900 ">Sin devolucion</label>
+                        <label for="checkbox_1" class="ms-2 text-sm font-medium text-gray-900 ">{languaje === 'Español' ? 'Sin devolucion' : 'Glossary'}</label>
                       </div>
                       {selectValue['MERCANCIA'] && selectValue['MERCANCIA'].toLowerCase().includes('contenedor') && <div class="flex items-center">
                         <input id="checkbox_2" type="checkbox" checked={selectValue['SERVICIO'] === 'CON DEVOLUCION'} value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-100 focus:ring-1 " onClick={() => handlerClickSelect2('CON DEVOLUCION')} />
-                        <label for="checkbox_2" class="ms-2 text-sm font-medium text-gray-900 ">Con devolucion</label>
+                        <label for="checkbox_2" class="ms-2 text-sm font-medium text-gray-900 ">{languaje === 'Español' ? 'Con devolucion' : 'Glossary'}</label>
                       </div>}
                     </div>
                     {preValidate()
-                      ? <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px] w-full  px-5 py-2.5 text-center  mt-7 lg:col-span-2" onClick={()=>handlerElement('FTL')}>Cotizar</button>
+                      ? <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px] w-full  px-5 py-2.5 text-center  mt-7 lg:col-span-2" onClick={() => handlerElement('FTL')}>Cotizar</button>
                       : <button type="submit" className=" focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px] w-full  px-5 py-2.5 text-center  mt-7 lg:col-span-2          text-white bg-green-500     " onClick={HandlerCheckOut2}>Solicitar Cotizacion</button>
                     }
                   </form>
@@ -367,34 +366,34 @@ export default function Home() {
                   <div className=" pt-5 " >
                     <div className='flex flex-col w-full'>
                       <div className='grid grid-cols-2'>
-                        <span className='w-full bg-slate-100  font-bold  border px-3 py-1'>ORIGEN</span><span className='w-full border px-3 py-1'>{calcValue['ORIGEN']}</span>
+                        <span className='w-full bg-slate-100  font-bold  border px-3 py-1'>{languaje === 'Español' ? 'ORIGEN' : 'ORIGIN'}</span><span className='w-full border px-3 py-1'>{calcValue['ORIGEN']}</span>
                       </div>
                       <div className='grid grid-cols-2'>
-                        <span className='w-full bg-slate-100  font-bold  border px-3 py-1'>DESTINO</span><span className='w-full border px-3 py-1'>{calcValue['DESTINO']}</span>
+                        <span className='w-full bg-slate-100  font-bold  border px-3 py-1'>{languaje === 'Español' ? 'DESTINO' : 'DESTINATION'}</span><span className='w-full border px-3 py-1'>{calcValue['DESTINO']}</span>
                       </div>
                       <div className='grid grid-cols-2'>
-                        <span className='w-full bg-slate-100  font-bold  border px-3 py-1'>MERCACIA</span><span className='w-full border px-3 py-1'>{calcValue['MERCANCIA']}</span>
+                        <span className='w-full bg-slate-100  font-bold  border px-3 py-1'>{languaje === 'Español' ? 'MERCACIA' : 'MERCHANDISE'}</span><span className='w-full border px-3 py-1'>{calcValue['MERCANCIA']}</span>
                       </div>
                       <div className='grid grid-cols-2'>
-                        <span className='w-full bg-slate-100  font-bold  border px-3 py-1'>PESO</span><span className='w-full border px-3 py-1'>{calcValue['PESO (KG)']} KG</span>
+                        <span className='w-full bg-slate-100  font-bold  border px-3 py-1'>{languaje === 'Español' ? 'PESO' : 'WEIGHT'}</span><span className='w-full border px-3 py-1'>{calcValue['PESO (KG)']} KG</span>
                       </div>
                       <div className='grid grid-cols-2'>
-                        <span className='w-full bg-slate-100  font-bold  border px-3 py-1'>VOLUMEN</span><span className='w-full border px-3 py-1'>{calcValue['VOLUMEN M3']} M3</span>
+                        <span className='w-full bg-slate-100  font-bold  border px-3 py-1'>{languaje === 'Español' ? 'VOLUMEN' : 'VOLUME'}</span><span className='w-full border px-3 py-1'>{calcValue['VOLUMEN M3']} M3</span>
                       </div>
                       <div className='grid grid-cols-2'>
-                        <span className='w-full bg-slate-100  font-bold  border px-3 py-1'>TIPO DE UNIDAD</span><span className='w-full border px-3 py-1'>{calcValue['TIPO DE UNIDAD']}</span>
+                        <span className='w-full bg-slate-100  font-bold  border px-3 py-1'>{languaje === 'Español' ? 'TIPO DE UNIDAD' : 'UNIT TYPE'}</span><span className='w-full border px-3 py-1'>{calcValue['TIPO DE UNIDAD']}</span>
                       </div>
                       <div className='grid grid-cols-2'>
-                        <span className='w-full bg-slate-100  font-bold  border px-3 py-1'>SERVICIO</span><span className='w-full border px-3 py-1'>{calcValue['SERVICIO']}</span>
+                        <span className='w-full bg-slate-100  font-bold  border px-3 py-1'>{languaje === 'Español' ? 'SERVICIO' : 'SERVICE'}</span><span className='w-full border px-3 py-1'>{calcValue['SERVICIO']}</span>
                       </div>
                       <div className='grid grid-cols-2'>
-                        <span className='w-full bg-slate-100  font-bold  border px-3 py-1'>FLETE USD</span><span className='w-full border px-3 py-1'>{calcValue['FLETE USD']}</span>
+                        <span className='w-full bg-slate-100  font-bold  border px-3 py-1'>{languaje === 'Español' ? 'FLETE USD' : 'FREIGHT USD'}</span><span className='w-full border px-3 py-1'>{calcValue['FLETE USD']}</span>
                       </div>
                       <div className='grid grid-cols-2 '>
-                        <span className='w-full  font-bold  border px-3 py-1'>SERVICIOS LOGISTICOS USD</span><span className='w-full border px-3 py-1'>{calcValue['SERVICIOS LOGISTICOS USD']}</span>
+                        <span className='w-full  font-bold  border px-3 py-1'>{languaje === 'Español' ? 'USD LOGISTICS SERVICES' : 'Glossary'}</span><span className='w-full border px-3 py-1'>{calcValue['SERVICIOS LOGISTICOS USD']}</span>
                       </div>
                       <div className='grid grid-cols-2 bg-[#ffbb00] border-[#ffbb00]  border-[#ffbb0]'>
-                        <span className='w-full  font-bold border-[#ffcc41] border px-3 py-1'>TOTAL USD</span><span className='w-full border border-[#ffcc41] font-bold px-3 py-1'>{calcValue['TOTAL']}</span>
+                        <span className='w-full  font-bold border-[#ffcc41] border px-3 py-1'>{languaje === 'Español' ? 'TOTAL USD' : 'TOTAL USD'}</span><span className='w-full border border-[#ffcc41] font-bold px-3 py-1'>{calcValue['TOTAL']}</span>
                       </div>
                     </div>
 
@@ -405,7 +404,7 @@ export default function Home() {
                   </div>
                 }
                 <br />
-                {calcValueFCL !== 'NO DATA' && <h5 className='px-5 py-1 my-2 bg-blue-700  text-white '>ELIJE LA NAVIERA</h5>}
+                {calcValueFCL !== 'NO DATA' && <h5 className='px-5 py-1 my-2 bg-blue-700  text-white '>{languaje === 'Español' ? 'ELIJE LA NAVIERA' : 'CHOOSE THE SHIPPING COMPANY'}</h5>}
 
                 {calcValueFCL !== 'NO DATA' &&
                   calcValueFCL.filter((i) => selectValue.EQUIPO.includes(i.EQUIPO)).map((i) => i.NAVIERA).map(i => <button className={` rounded-full border-[1px] px-10 transition-all mr-2 ${i === naviera ? 'bg-[#ffbb00] border-[#d4d4d4]' : 'border-[#d4d4d4] '}`} onClick={() => setNaviera(i)}>{i}</button>)
@@ -420,16 +419,16 @@ export default function Home() {
                   calcValueFCL.map((item) => {
 
                     return naviera === item.NAVIERA && selectValue.EQUIPO.includes(item.EQUIPO) && <div className=" pt-5 " >
-                      <h5 className='px-5 py-1 my-2 bg-blue-700  text-white  '>DETALLES</h5>
-                      <div className='flex w-full'><span className='w-full bg-slate-100 font-bold border px-3 py-1'>Origen</span><span className='w-full border px-3 py-1'>{item.ORIGEN}</span></div>
-                      <div className='flex w-full'><span className='w-full bg-slate-100 font-bold border px-3 py-1'>Destino</span><span className='w-full border px-3 py-1'>{item.DESTINO}</span></div>
-                      <div className='flex w-full'><span className='w-full bg-slate-100 font-bold border px-3 py-1'>Equipo</span><span className='w-full border px-3 py-1'>{item.EQUIPO}</span></div>
+                      <h5 className='px-5 py-1 my-2 bg-blue-700  text-white  '>{languaje === 'Español' ? 'SERVICIO' : 'SERVICE'}DETALLES</h5>
+                      <div className='flex w-full'><span className='w-full bg-slate-100 font-bold border px-3 py-1'>{languaje === 'Español' ? 'Origen' : 'Origin'}</span><span className='w-full border px-3 py-1'>{item.ORIGEN}</span></div>
+                      <div className='flex w-full'><span className='w-full bg-slate-100 font-bold border px-3 py-1'>{languaje === 'Español' ? 'Destino' : 'Destination'}</span><span className='w-full border px-3 py-1'>{item.DESTINO}</span></div>
+                      <div className='flex w-full'><span className='w-full bg-slate-100 font-bold border px-3 py-1'>{languaje === 'Español' ? 'Equipo' : 'Equipment'}</span><span className='w-full border px-3 py-1'>{item.EQUIPO}</span></div>
                       <div className='flex w-full'><span className='w-full bg-slate-100  font-bold border px-3 py-1'>TT</span><span className='w-full border px-3 py-1'>{item.TT}</span></div>
-                      {item.flete && <h5 className='px-5 py-1 my-2 bg-blue-700  text-white '>FLETE</h5>}
+                      {item.flete && <h5 className='px-5 py-1 my-2 bg-blue-700  text-white '>{languaje === 'Español' ? 'SERVICIO' : 'FREIGHT'}</h5>}
                       {item.flete && Object.entries(item.flete).map((i, index) => <div className='flex w-full'><span className='w-full bg-slate-100 font-bold border px-3 py-1'>{i[1].ip}</span><span className='w-full border px-3 py-1'>{i[1].ic} USD</span></div>)}
-                      {item['recargos origen'] && <h5 className='px-5 py-1 my-2 bg-blue-700  text-white '>RECARGOS ORIGEN</h5>}
+                      {item['recargos origen'] && <h5 className='px-5 py-1 my-2 bg-blue-700  text-white '>{languaje === 'Español' ? 'RECARGOS ORIGEN' : 'CORIGEN SURCHARGES'}  </h5>}
                       {item['recargos origen'] && Object.entries(item['recargos origen']).map((i, index) => <div className='flex w-full'><span className='w-full bg-slate-100 font-bold border px-3 py-1'>{i[1].ip}</span><span className='w-full border px-3 py-1'>{i[1].ic} USD</span></div>)}
-                      {item['recargos destino'] && <h5 className='px-5 py-1 my-2 bg-blue-700  text-white '>RECARGOS DESTINO</h5>}
+                      {item['recargos destino'] && <h5 className='px-5 py-1 my-2 bg-blue-700  text-white '>{languaje === 'Español' ? 'RECARGOS DESTINO' : 'DESTINATION SURCHARGES'} </h5>}
                       {item['recargos destino'] && Object.entries(item['recargos destino']).map((i, index) => <div className='flex w-full'><span className='w-full bg-slate-100 font-bold border px-3 py-1'>{i[1].ip}</span><span className='w-full border px-3 py-1'>{i[1].ic} USD</span></div>)}
                       <div className='flex w-full bg-[#ffbb00] border-[#ffcc41]'>
                         <span className='w-full  font-bold border border-[#ffcc41] px-3 py-1'>TOTAL USD</span>
@@ -465,7 +464,10 @@ export default function Home() {
                       <br />
 
                       <div>
-                        Fecha maxima de vigencia de cotizacion: {item.VALIDEZ && item.VALIDEZ !== undefined && item.VALIDEZ.split('-').reverse().map((e) => e + '/')}
+                        {languaje === 'Español'
+                          ? 'Fecha maxima de vigencia de cotizacion:'
+                          : 'Maximum quote validity date:'}
+                        {item.VALIDEZ && item.VALIDEZ !== undefined && item.VALIDEZ.split('-').reverse().map((e) => e + '/')}
                       </div>
                     </div>
 
@@ -473,7 +475,11 @@ export default function Home() {
                 }
               </div>
               <a href={`tel:${cliente.contactos.telefono}`}>
-                <marquee className="text-white py-5" behavior="" direction="">Llamanos ya clickea aqui      <button className='border px-5 ml-5  rounded-full bg-[#00000070]' >{cliente.contactos.telefono}</button> </marquee>
+                <marquee className="text-white py-5" behavior="" direction="">
+                  {languaje === 'Español'
+                    ? 'Llamanos ya clickea aqui'
+                    : 'Call us now click here'}
+                  <button className='border px-5 ml-5  rounded-full bg-[#00000070]' >{cliente.contactos.telefono}</button> </marquee>
               </a>
             </div>
           </div>
@@ -508,8 +514,12 @@ export default function Home() {
               <ScrollAnimation animateIn='bounceInRight'>
 
                 <button type="button" onClick={() => handlerSeeMore('PORQUE')} className="relative w-full border-[2px] md:min-w-[300px] md:max-w-[300px] text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-[12px] px-5 py-2.5 text-center inline-flex items-center my-2">
-                  ¿POR QUE ELEGIRNOS? saber {seeMore === 'PORQUE' ? 'menos' : 'mas'}...
-                  <span className={seeMore === 'PORQUE' ? 'absolute right-5 rotate-[270deg]' : 'absolute right-5 rotate-90'}>{'>'}</span>
+                  {languaje === 'Español'
+                    ? '¿POR QUE ELEGIRNOS? saber'
+                    : 'WHY CHOOSE US? know'} {seeMore === 'PORQUE' ? 'menos' : 'mas'}...
+                  <span className={seeMore === 'PORQUE'
+                    ? 'absolute right-5 rotate-[270deg]'
+                    : 'absolute right-5 rotate-90'}>{'>'}</span>
 
                 </button>
 
@@ -517,33 +527,25 @@ export default function Home() {
 
               <div className={`col-span-2 text-center transition-all w-[100%] ${seeMore === 'PORQUE' ? 'h-auto py-5' : 'h-0'} text-[14px] overflow-hidden text-white lg:hidden`} id='PorQueElegirnos'>
 
-                <h4 className='text-[26px] text-center font-bold text-[#F7BE38]  py-5' >¿POR QUE ELEGIRNOS?</h4>
+                <h4 className='text-[26px] text-center font-bold text-[#F7BE38]  py-5' >{languaje === 'Español' ? '¿POR QUE ELEGIRNOS?' : 'WHY CHOOSE US?'}</h4>
                 <p className='text-left '>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                  •	Nuestro servicio está orientado a estándares de calidad, estamos comprometidos a darle una atención personalizada y crear soluciones logísticas inteligentes de acuerdo a cada negocio.
+                  {languaje === 'Español'
+                    ? '•	Nuestro servicio está orientado a estándares de calidad, estamos comprometidos a darle una atención personalizada y crear soluciones logísticas inteligentes de acuerdo a cada negocio.'
+                    : 'SERVICE'}
                 </p>
                 <p className='text-left '>
-                  •	Sabemos la responsabilidad que conlleva nuestro servicio por lo cual cada que se nos asigna una operación la llevamos a cabo con un riguroso control para optimizar los recursos a utilizar.
+                  {languaje === 'Español'
+                    ? '•	Sabemos la responsabilidad que conlleva nuestro servicio por lo cual cada que se nos asigna una operación la llevamos a cabo con un riguroso control para optimizar los recursos a utilizar.'
+                    : '•	We know the responsibility that our service entails, which is why every time we are assigned an operation we carry it out with rigorous control to optimize the resources to be used.'}
                 </p>
               </div>
 
               <ScrollAnimation animateIn='bounceInRight'>
 
                 <button type="button" onClick={() => handlerSeeMore('MISION')} className="relative w-full border-[2px] md:min-w-[300px] md:max-w-[300px] text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-[12px] px-5 py-2.5 text-center inline-flex items-center mt-[20px] lg:mt-2 my-2">
-                  MISIÓN y VISIÓN saber {seeMore === 'MISION' ? 'menos' : 'mas'}...
+                  {languaje === 'Español'
+                    ? 'MISIÓN y VISIÓN saber'
+                    : 'MISSION and VISION know'}{seeMore === 'MISION' ? 'menos' : 'mas'}...
                   <span className={seeMore === 'MISION' ? 'absolute right-5 rotate-[270deg]' : 'absolute right-5 rotate-90'}>{'>'}</span>
 
                 </button>
@@ -558,29 +560,34 @@ export default function Home() {
 
 
               <div className='md:px-[20px] text-[16px]'>
-                <h4 className='text-[26px] text-center font-bold text-[#F7BE38]  py-5'>MISION</h4>
-                Nuestra misión es integrarnos en la cadena de suministro de nuestros clientes como un aliado estratégico, optimizando y cuidando cada proceso para garantizar la máxima eficiencia. Nos comprometemos a simplificar la logística de tal manera que nuestros clientes puedan enfocarse en su negocio principal, asegurando al mismo tiempo una reducción significativa de costos. En Logistics Gear, no solo transportamos mercancías; facilitamos soluciones logísticas integrales que aceleran el éxito de nuestros clientes.
+                <h4 className='text-[26px] text-center font-bold text-[#F7BE38]  py-5'>{languaje === 'Español' ? 'SERVICIO' : 'SERVICE'}MISION</h4>
+                {languaje === 'Español'
+                  ? 'Nuestra misión es integrarnos en la cadena de suministro de nuestros clientes como un aliado estratégico, optimizando y cuidando cada proceso para garantizar la máxima eficiencia. Nos comprometemos a simplificar la logística de tal manera que nuestros clientes puedan enfocarse en su negocio principal, asegurando al mismo tiempo una reducción significativa de costos. En Logistics Gear, no solo transportamos mercancías; facilitamos soluciones logísticas integrales que aceleran el éxito de nuestros clientes.'
+                  : 'Our mission is to integrate into our clients supply chain as a strategic ally, optimizing and taking care of each process to guarantee maximum efficiency. We are committed to simplifying logistics so that our clients can focus on their core business, while ensuring significant cost reduction. At Logistics Gear, we dont just transport goods; We provide comprehensive logistics solutions that accelerate the success of our clients.'}
 
 
               </div>
               <div className='md:px-[20px]  text-[16px]'>
-                <h4 className='text-[26px] text-center font-bold text-[#F7BE38] py-5'>VISION</h4>
-                Nuestra visión es consolidarnos como el referente indiscutible en el sector logístico, ganándonos la confianza plena de nuestros clientes a través de la excelencia, innovación y un servicio impecable. Aspiramos a ser reconocidos por nuestra capacidad de superar expectativas, adaptarnos a los cambios del mercado con agilidad y liderar el camino hacia un futuro donde la eficiencia logística y la sostenibilidad van de la mano. En Logistics Gear, nos comprometemos a ser sinónimo de confiabilidad y calidad, estableciendo nuevos estándares en la industria y expandiendo nuestra presencia global para conectar aún más el mundo con nuestros servicios.
+                <h4 className='text-[26px] text-center font-bold text-[#F7BE38] py-5'>{languaje === 'Español' ? 'SERVICIO' : 'SERVICE'}VISION</h4>
+                {languaje === 'Español'
+                  ? 'Nuestra visión es consolidarnos como el referente indiscutible en el sector logístico, ganándonos la confianza plena de nuestros clientes a través de la excelencia, innovación y un servicio impecable. Aspiramos a ser reconocidos por nuestra capacidad de superar expectativas, adaptarnos a los cambios del mercado con agilidad y liderar el camino hacia un futuro donde la eficiencia logística y la sostenibilidad van de la mano. En Logistics Gear, nos comprometemos a ser sinónimo de confiabilidad y calidad, estableciendo nuevos estándares en la industria y expandiendo nuestra presencia global para conectar aún más el mundo con nuestros servicios.'
+                  : 'SERVOur vision is to consolidate ourselves as the undisputed benchmark in the logistics sector, earning the full trust of our clients through excellence, innovation and impeccable service. We aspire to be recognized for our ability to exceed expectations, adapt to market changes with agility and lead the way towards a future where logistics efficiency and sustainability go hand in hand. At Logistics Gear, we are committed to being synonymous with reliability and quality, setting new standards in the industry and expanding our global presence to further connect the world with our services.ICE'}
               </div>
             </div>
             <div className={`col-span-2 text-center transition-all w-[50%] ${seeMore === 'PORQUE' ? 'h-auto py-5' : 'h-0'} text-[14px] overflow-hidden text-white hidden lg:block `} id='PorQueElegirnos'>
 
               <h4 className='text-[26px] text-center font-bold text-[#F7BE38]  py-5' >¿POR QUE ELEGIRNOS?</h4>
               <p className='text-left '>
-                •	Nuestro servicio está orientado a estándares de calidad, estamos comprometidos a darle una atención personalizada y crear soluciones logísticas inteligentes de acuerdo a cada negocio.
+                {languaje === 'Español'
+                  ? '•	Nuestro servicio está orientado a estándares de calidad, estamos comprometidos a darle una atención personalizada y crear soluciones logísticas inteligentes de acuerdo a cada negocio.'
+                  : 'SERVICE'}
               </p>
               <p className='text-left '>
-                •	Sabemos la responsabilidad que conlleva nuestro servicio por lo cual cada que se nos asigna una operación la llevamos a cabo con un riguroso control para optimizar los recursos a utilizar.
+                {languaje === 'Español'
+                  ? '•	Sabemos la responsabilidad que conlleva nuestro servicio por lo cual cada que se nos asigna una operación la llevamos a cabo con un riguroso control para optimizar los recursos a utilizar.'
+                  : 'SERVICE'}
               </p>
             </div>
-
-
-
           </div>
 
         </section>
@@ -592,8 +599,8 @@ export default function Home() {
           description={cliente['terrestre'].content} descriptionEN={cliente['terrestre'].contentEN}
           video={cliente['terrestre'].url} degrade='#00000067' tarjetas={cliente['terrestre'].tarjetas} miniTarjetas={cliente['terrestre'].miniTarjetas} id={'terrestre'}></Section>}
 
-        {cliente['maritimo'] && <Section 
-        subtitle={cliente['maritimo'].titulo} subtitleEN={cliente['maritimo'].tituloEN}
+        {cliente['maritimo'] && <Section
+          subtitle={cliente['maritimo'].titulo} subtitleEN={cliente['maritimo'].tituloEN}
           description={cliente['maritimo'].content} descriptionEN={cliente['maritimo'].contentEN}
           video={cliente['maritimo'].url} degrade='#00000067' tarjetas={cliente['maritimo'].tarjetas} miniTarjetas={cliente['maritimo'].miniTarjetas} id={'maritimo'}></Section>}
 
@@ -603,13 +610,13 @@ export default function Home() {
           video={cliente['aereo'].url} degrade='#00000067' tarjetas={cliente['aereo'].tarjetas} miniTarjetas={cliente['aereo'].miniTarjetas} id={'aereo'}></Section>}
 
         {cliente['despachos'] && <Section
-          subtitle={cliente['despachos'].titulo}  subtitleEN={cliente['despachos'].tituloEN}
+          subtitle={cliente['despachos'].titulo} subtitleEN={cliente['despachos'].tituloEN}
           description={cliente['despachos'].content} descriptionEN={cliente['despachos'].contentEN}
           video={cliente['despachos'].url} degrade='#00000067' tarjetas={cliente['despachos'].tarjetas} miniTarjetas={cliente['despachos'].miniTarjetas} id={'despachos'}></Section>}
 
         {cliente['proyecto'] && <Section
           subtitle={cliente['proyecto'].titulo} subtitleEN={cliente['proyecto'].tituloEN}
-          description={cliente['proyecto'].content} descriptionEN={cliente['proyecto'].contentEN} 
+          description={cliente['proyecto'].content} descriptionEN={cliente['proyecto'].contentEN}
           video={cliente['proyecto'].url} degrade='#00000067' tarjetas={cliente['proyecto'].tarjetas} miniTarjetas={cliente['proyecto'].miniTarjetas} id={'proyecto'}></Section>}
 
         {cliente['exportaciones'] && <Section
@@ -619,7 +626,7 @@ export default function Home() {
 
         {cliente['farmaceutico'] && <Section
           subtitle={cliente['farmaceutico'].titulo} subtitleEN={cliente['farmaceutico'].tituloEN}
-          description={cliente['farmaceutico'].content}  descriptionEN={cliente['farmaceutico'].contentEN} 
+          description={cliente['farmaceutico'].content} descriptionEN={cliente['farmaceutico'].contentEN}
           video={cliente['farmaceutico'].url} degrade='#00000067' tarjetas={cliente['farmaceutico'].tarjetas} miniTarjetas={cliente['farmaceutico'].miniTarjetas} id={'farmaceutico'}></Section>}
 
         {cliente['solucionesIT'] && <Section
@@ -669,7 +676,6 @@ export default function Home() {
 
 
 
-      </Translator>
 
     </main>
 

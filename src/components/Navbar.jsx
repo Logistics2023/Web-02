@@ -43,25 +43,16 @@ export default function BottomNavigation({ rol }) {
     };
 
 
-    // console.log(filter)
     function handlerFilter(e) {
         setFilter(e.target.value)
         console.log(filter)
     }
-
-
-
     function handlerClickSelect(name, i, uuid) {
-        setLanguaje('')
-        i === 'Español' ? '' : setUserSuccess('Change')
         setLanguaje(i)
         setTimeout(() => {
             setUserSuccess('')
         }, 1);
     }
-
-
-
 
     useEffect(() => {
         window.addEventListener('scroll', controlNavbar);
@@ -192,7 +183,7 @@ export default function BottomNavigation({ rol }) {
                                 </div>
                             </li>
                             <li onClick={() => handlerNavItem('Nosotros')}>
-                                <Link href="#" className={`block py-2 pl-3 pr-4 text-[14px] rounded   md:border-0  md:p-0   transition-all hover:text-[#F1BA06] cursor-pointer z-30 ${navItem === 'Nosotros' ? 'text-[#F1BA06]' : 'text-white'}`}>{languaje === 'Español' ? 'Acerca de' : 'About Us'}Acerca de</Link>
+                                <Link href="#" className={`block py-2 pl-3 pr-4 text-[14px] rounded   md:border-0  md:p-0   transition-all hover:text-[#F1BA06] cursor-pointer z-30 ${navItem === 'Nosotros' ? 'text-[#F1BA06]' : 'text-white'}`}>{languaje === 'Español' ? 'Acerca de' : 'About Us'}</Link>
                                 <div className={`absolute top-[90px] right-[20px] w-[350px]  bg-blue-950  grid grid-cols-2 gap-[20px]  rounded-2xl z-20  overflow-hidden ${navItem === 'Nosotros' ? 'h-auto p-[20px]' : 'h-0 overflow-hidden'}`}>
                                     <Link href='/#Nosotros' className='bg-[#F1BA06]   flex flex-col items-center px-[5px] py-[5px] rounded-[7px]'>
                                         <img src="/icons/NOSOTROS.png" className=" w-[35px]" alt="" />
@@ -319,7 +310,7 @@ export default function BottomNavigation({ rol }) {
                     </Link>
                     <Link href='/Impuestos' onClick={() => setNav(false)} className='bg-[#F1BA06]   flex flex-col items-center px-[5px] py-[5px] rounded-[7px]'>
                         <img src="/icons/CALCULADORA DE IMPUESTOS.png" className=" w-[35px]" alt="" />
-                        <span className="text-[12px] font-medium text-center">{languaje === 'Español' ? 'Calculadora de impuestos' : 'Login'} </span>
+                        <span className="text-[12px] font-medium text-center">{languaje === 'Español' ? 'Calculadora de impuestos' : 'tax calculator'} </span>
                     </Link>
                     <Link href='/Tracking' onClick={() => setNav(false)} className='bg-[#F1BA06]   flex flex-col items-center px-[5px] py-[5px] rounded-[7px]'>
                         <img src="/icons/DIRECCION.png" className=" w-[35px]" alt="" />
@@ -327,7 +318,7 @@ export default function BottomNavigation({ rol }) {
                     </Link>
                     <Link href='/Glosario' onClick={() => setNav(false)} className='bg-[#F1BA06]   flex flex-col items-center px-[5px] py-[5px] rounded-[7px]'>
                         <img src="/icons/GLOSARIO.png" className=" w-[35px]" alt="" />
-                        <span className="text-[12px] font-medium text-center">{languaje === 'Español' ? 'Glosario' : 'Glosary'}</span>
+                        <span className="text-[12px] font-medium text-center">{languaje === 'Español' ? 'Glosario' : 'Glossary'}</span>
                     </Link>
                 </div>
                 <div className='relative grid grid-cols-2 gap-[20px] p-[100px] pt-[10px] '>

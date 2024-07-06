@@ -16,12 +16,12 @@ export default function Home() {
             <Slider content={Object.values(cliente.Slider1)} />
           </div>}
 
-          {cliente.Slider2 && <div className='relative '>
+          {cliente.Slider2 && <div className='relative pb-[100px] '>
             <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>Socios  Comerciales</h1>
             <Slider content={Object.values(cliente.Slider2)} />
           </div>}
 
-          {cliente.Slider3 && <div className='relative '>
+          {cliente.Slider3 && <div className='relative pb-[200px] '>
             <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>Empresas</h1>
             <Slider content={Object.values(cliente.Slider3)} />
           </div>}
