@@ -7,27 +7,23 @@ export default function Home() {
   const { cliente, languaje } = useUser()
 
   return (
-<Translator from='es' to={languaje.slice(0, 2).toLowerCase()}>
-    <footer className="relative w-screen  text-center text-white pb-[70px] lg:pb-0 z-50" id="Contactos">
+    <footer className="relative w-screen  text-center text-white pb-[70px] lg:pb-0 z-20" id="Contactos">
       <div className='  bg-gradient-to-tr from-[#00195c] via-[#384C94] to-[#00195c]'>
 
-      {cliente.Slider1 && <div className='relative  pb-[100px] '>
-            <h1 className='text-center font-bold text-[25px] py-[50px] text-white '>Nuestros Clientes</h1>
-            <Slider content={Object.values(cliente.Slider1)} />
-          </div>}
+ 
 
           {cliente.Slider2 && <div className='relative pb-[100px] '>
-            <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>Socios  Comerciales</h1>
+            <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>{languaje === 'Español' ? 'Socios  Comerciales' : 'Business partners'}</h1>
             <Slider content={Object.values(cliente.Slider2)} />
           </div>}
 
           {cliente.Slider3 && <div className='relative pb-[200px] '>
-            <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>Empresas</h1>
+            <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>{languaje === 'Español' ? 'Empresas' : 'Companies'}</h1>
             <Slider content={Object.values(cliente.Slider3)} />
           </div>}
 
 
-            <h3 className={`w-full text-white text-left font-bold text-[26px] pl-[5px]`}>Contactos</h3>
+            <h3 className={`w-full text-white text-left font-bold text-[26px] pl-[5px]`}>{languaje === 'Español' ? 'Contactos' : 'Contacts'}</h3>
           <br />
        
         <div className="p-4  ">
@@ -169,7 +165,6 @@ export default function Home() {
       </div>
 
     </footer>
-    </Translator>
   )
 }
 
