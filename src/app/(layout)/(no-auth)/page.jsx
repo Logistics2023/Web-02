@@ -13,8 +13,7 @@ import { glosario } from '@/db'
 import Footer from '@/components/Footer'
 import TextMaquina from '@/components/TextMaquina'
 import TextMaquina2 from '@/components/TextMaquina2'
-
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import AwesomeSlider from 'react-awesome-slider';
 import withAutoplay from 'react-awesome-slider/dist/autoplay';
 import ScrollAnimation from 'react-animate-on-scroll';
@@ -52,6 +51,7 @@ export default function Home() {
 
   // const [hash, sethash] = useState('')
 
+  const pathname = usePathname()
 
   const router = useRouter()
   const AutoplaySlider = withAutoplay(AwesomeSlider);
@@ -272,6 +272,7 @@ export default function Home() {
           <source src={cliente.inicio.url} type="video/mp4" />
         </video>
         <div className='absolute top-0  w-full min-h-[100vh] h-full object-cover z-10 bg-gradient-to-tr from-[#00195c]  via-[#cfbd7546] to-[#00195c72]    lg:bg-gradient-to-tr lg:from-[#00195cd7]  lg:via-[#cfbd7546] lg:to-[#00195c] '></div>
+      
         <div className='relative min-h-[100vh] h-auto   w-full lg:pt-[70px] pb-0 flex flex-col justify-around lg:flex-row items-center  z-20' style={{ background: '-gradient(to bottom, #000000,  #000000c7, #00000050' }}>
           <img src='/logo-comp.gif' className=' relative  inline-block w-[80vw] h-[80vw]    lg:w-[30vw] lg:h-[60vh]  object-cover object-center ' />
           <div className='relative  w-full lg:w-[40%] lg:bg-[#111a33d0] p-5 '>
@@ -292,7 +293,7 @@ export default function Home() {
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M17.0508 2.91006C16.134 1.98399 15.042 1.24973 13.8384 0.750111C12.6349 0.250494 11.3439 -0.00448012 10.0408 5.95696e-05C4.58078 5.95696e-05 0.130781 4.45006 0.130781 9.91006C0.130781 11.6601 0.590781 13.3601 1.45078 14.8601L0.0507812 20.0001L5.30078 18.6201C6.75078 19.4101 8.38078 19.8301 10.0408 19.8301C15.5008 19.8301 19.9508 15.3801 19.9508 9.92006C19.9508 7.27006 18.9208 4.78006 17.0508 2.91006ZM10.0408 18.1501C8.56078 18.1501 7.11078 17.7501 5.84078 17.0001L5.54078 16.8201L2.42078 17.6401L3.25078 14.6001L3.05078 14.2901C2.22853 12.977 1.79192 11.4593 1.79078 9.91006C1.79078 5.37006 5.49078 1.67006 10.0308 1.67006C12.2308 1.67006 14.3008 2.53006 15.8508 4.09006C16.6183 4.85402 17.2265 5.76272 17.6402 6.76348C18.0539 7.76425 18.2648 8.83717 18.2608 9.92006C18.2808 14.4601 14.5808 18.1501 10.0408 18.1501ZM14.5608 11.9901C14.3108 11.8701 13.0908 11.2701 12.8708 11.1801C12.6408 11.1001 12.4808 11.0601 12.3108 11.3001C12.1408 11.5501 11.6708 12.1101 11.5308 12.2701C11.3908 12.4401 11.2408 12.4601 10.9908 12.3301C10.7408 12.2101 9.94078 11.9401 9.00078 11.1001C8.26078 10.4401 7.77078 9.63006 7.62078 9.38006C7.48078 9.13006 7.60078 9.00006 7.73078 8.87006C7.84078 8.76006 7.98078 8.58006 8.10078 8.44006C8.22078 8.30006 8.27078 8.19006 8.35078 8.03006C8.43078 7.86006 8.39078 7.72006 8.33078 7.60006C8.27078 7.48006 7.77078 6.26006 7.57078 5.76006C7.37078 5.28006 7.16078 5.34006 7.01078 5.33006H6.53078C6.36078 5.33006 6.10078 5.39006 5.87078 5.64006C5.65078 5.89006 5.01078 6.49006 5.01078 7.71006C5.01078 8.93006 5.90078 10.1101 6.02078 10.2701C6.14078 10.4401 7.77078 12.9401 10.2508 14.0101C10.8408 14.2701 11.3008 14.4201 11.6608 14.5301C12.2508 14.7201 12.7908 14.6901 13.2208 14.6301C13.7008 14.5601 14.6908 14.0301 14.8908 13.4501C15.1008 12.8701 15.1008 12.3801 15.0308 12.2701C14.9608 12.1601 14.8108 12.1101 14.5608 11.9901Z" fill="white" />
                 </svg>
-                <span className='pl-5'> {languaje === 'Español' ? 'Contactar': 'Contact'}</span>
+                <span className='pl-5'> {languaje === 'Español' ? 'Contactar' : 'Contact'}</span>
               </button>
             </div>
             <br />
@@ -555,7 +556,7 @@ export default function Home() {
 
 
           </div>
-     
+
 
           <div className={`col-span-2 text-center transition-all md:grid grid-cols-2 ${seeMore === 'MISION' ? 'h-auto py-5' : 'h-0'} text-[14px] overflow-hidden text-white`}>
 
@@ -590,12 +591,12 @@ export default function Home() {
                 : 'SERVICE'}
             </p>
           </div>
-        
+
         </div>
         {cliente.Slider1 && <div className='relative  pb-[100px] bg-gradient-to-t from-[#00195cdc] via-[#00195cb6] to-[#00195cdc] '>
-            <h1 className='text-center font-bold text-[25px] py-[50px] text-white '>{languaje === 'Español' ? 'Confia En Nosotros' : 'Trust us'}</h1>
-            <Slider content={Object.values(cliente.Slider1)} />
-          </div>}
+          <h1 className='text-center font-bold text-[25px] py-[50px] text-white '>{languaje === 'Español' ? 'Confia En Nosotros' : 'Trust us'}</h1>
+          <Slider content={Object.values(cliente.Slider1)} />
+        </div>}
       </section>
 
 

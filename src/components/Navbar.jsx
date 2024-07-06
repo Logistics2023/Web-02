@@ -67,9 +67,21 @@ export default function BottomNavigation({ rol }) {
           </div> */}
             <Translator from='es' to={languaje.slice(0, 2).toLowerCase()}>
                 <div className="w-screen flex items-center justify-between mx-auto py-4 px-4 lg:px-8 ">
-                    <Link href="/" className="flex items-center">
-                        <img src="/logo.svg" className="relative top-[3px] h-[50px]  mr-3" alt="Flowbite Logo" />
-                    </Link>
+                    <div className='flex items-center  md:hidden'>
+                   {   pathname === '/' ?   <button data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 w-[40px] h-[40px] justify-center text-[12px] text-gray-500 rounded-lg lg:hidden  focus:outline-none focus:ring-2 focus:ring-gray-200 " onClick={openNav} aria-controls="navbar-default" aria-expanded="false">
+                            <span className="sr-only">Open main menu</span>
+                            <svg className="w-15 h-15 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 17 14">
+                                <path stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
+                            </svg>
+                        </button>
+                        :<Link href="/" className="flex items-center">
+                            <img src="/logo.svg" className="relative top-[3px] h-[50px]  mr-3" alt="Flowbite Logo" />
+                        </Link>}
+
+                    </div>
+                    <Link href="/" className=" items-center hidden  md:flex">
+                            <img src="/logo.svg" className="relative top-[3px] h-[50px]  mr-3" alt="Flowbite Logo" />
+                        </Link>
                     {
                         pathname === '/Glosario' && <div className="relative w-[60vw] max-w-[500px] h-[40px] ">
                             <input type="search" id="location-search" onChange={handlerFilter} className="block p-3 w-full  h-full z-20  placeholder-white text-[12px]   bg-[#7397e69d] rounded-[5px] focus:ring-blue-500 focus:border-blue-500 text-white" placeholder="Glosario" required />
@@ -101,15 +113,23 @@ export default function BottomNavigation({ rol }) {
                                     : <button className=' relative h-[35px] z-50 bg-[#F7BE38]  mr-5 p-2 px-5 rounded-[5px] border lg:hidden' onClick={() => router.push('/Login')}>Iniciar Sesión</button>
                                 )
                             }
-                            <button data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 w-[35px] h-[35px] justify-center text-[12px] text-gray-500 rounded-lg lg:hidden  focus:outline-none focus:ring-2 focus:ring-gray-200 " onClick={openNav} aria-controls="navbar-default" aria-expanded="false">
-                                <span className="sr-only">Open main menu</span>
-                                <svg className="w-12 h-12 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 17 14">
-                                    <path stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
+
+
+
+                            <button className=' flex items-center text-white h-[35px]  bg-gradient-to-r from-blue-900 via-blue-900 to-blue-900 hover:bg-gradient-to-br focus:ring-2 focus:outline-none focus:ring-blue-800      rounded-[5px] border    text-center  p-2 px-5' onClick={() => window.open('https://sistemas.logisticsgear.net')}>
+                                <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 10C11.1046 10 12 9.10457 12 8C12 6.89543 11.1046 6 10 6C8.89543 6 8 6.89543 8 8C8 9.10457 8.89543 10 10 10Z" stroke="white" stroke-width="1.5" />
+                                    <path d="M14 14C14 15.105 14 16 10 16C6 16 6 15.105 6 14C6 12.895 7.79 12 10 12C12.21 12 14 12.895 14 14Z" stroke="white" stroke-width="1.5" />
+                                    <path d="M1 9.417C1 6.219 1 4.62 1.378 4.082C1.755 3.545 3.258 3.03 6.265 2.001L6.838 1.805C8.405 1.268 9.188 1 10 1C10.811 1 11.595 1.268 13.162 1.805L13.735 2.001C16.742 3.03 18.245 3.545 18.622 4.082C19 4.62 19 6.22 19 9.417V10.991C19 13.496 18.163 15.428 17 16.904M1.193 13C2.05 17.298 5.576 19.513 7.899 20.527C8.62 20.842 8.981 21 10 21C11.02 21 11.38 20.842 12.101 20.527C12.68 20.275 13.332 19.947 14 19.533" stroke="white" stroke-width="1.5" stroke-linecap="round" />
                                 </svg>
+
                             </button>
+
+
                         </div>
 
                     }
+
 
 
                     <div className="hidden w-screen lg:block md:w-auto " id="navbar-default">
